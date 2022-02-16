@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -17,6 +18,7 @@ namespace API
         {
 
             services.AddControllers();
+            services.AddScoped<ICourseRepository,CourseRepository>();
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen(c =>
             {

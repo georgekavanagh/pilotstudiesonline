@@ -1,0 +1,14 @@
+[
+  {
+    "Name":"Private Pilots License",
+    "Code":"PPL"
+  },
+  {
+    "Name":"Commercial Pilots License",
+    "Code":"CPL"
+  },
+  {
+    "Name":"Airline Transport Pilots License",
+    "Code":"ATPL"
+  }
+]
