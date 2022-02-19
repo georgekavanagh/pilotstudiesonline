@@ -1,44 +1,63 @@
 
+using API.DTOs;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
+using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CoursesController : ControllerBase
+    public class CoursesController : BaseApiController
     {
-        private readonly ICourseRepository _repo;
-        public CoursesController(ICourseRepository repo)
+        private readonly IGenericRepository<Course> _courseRepo;
+        private readonly IGenericRepository<CourseRating> _courseRatingRepo;
+        private readonly IGenericRepository<CourseType> _courseTypeRepo;
+        private readonly IMapper _mapper;
+
+        public CoursesController(
+            IGenericRepository<Course> courseRepo,
+            IGenericRepository<CourseRating> courseRatingRepo,
+            IGenericRepository<CourseType> courseTypeRepo,
+            IMapper mapper
+        )
         {
-            _repo = repo;
+            _mapper = mapper;
+            _courseRepo = courseRepo;
+            _courseRatingRepo = courseRatingRepo;
+            _courseTypeRepo = courseTypeRepo;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Course>>> GetCourses()
+        public async Task<ActionResult<IReadOnlyList<CourseToReturnDTO>>> GetCourses()
         {
-            return Ok(await _repo.GetCoursesAsync());
+            var spec = new CoursesWithTypesAndRatingsSpecification();
+            var courses = await _courseRepo.GetAsync(spec);
+            return Ok(_mapper.Map<IReadOnlyList<Course>,IReadOnlyList<CourseToReturnDTO>>(courses));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        public async Task<ActionResult<CourseToReturnDTO>> GetCourse(int id)
         {
-            return await _repo.GetCourseByIdAsync(id);
+            var spec = new CoursesWithTypesAndRatingsSpecification(id);
+
+            var course = await _courseRepo.GetEntityWithSpec(spec);
+
+            return _mapper.Map<Course, CourseToReturnDTO>(course);
         }
 
         [HttpGet("types")]
         public async Task<ActionResult<CourseType>> GetCourseTypes()
         {
-            return Ok(await _repo.GetCourseTypesAsync());
+            return Ok(await _courseTypeRepo.GetAllAsync());
         }
 
         [HttpGet("ratings")]
         public async Task<ActionResult<CourseRating>> GetCourseRatings()
         {
-            return Ok(await _repo.GetCourseRatingssAsync());
+            return Ok(await _courseRatingRepo.GetAllAsync());
         }
     }
 }
