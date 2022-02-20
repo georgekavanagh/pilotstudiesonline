@@ -26,6 +26,8 @@
     "@ngneat/tailwind": "^7.0.3",
     "ng-particles": "^2.7.3",
     "ngx-skeleton-loader": "^2.10.0",
+    "primeicons": "^5.0.0",
+    "primeng": "^12.2.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "tsparticles": "^1.24.3",

@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lieblings": {
+    "pilotonlinestudies": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,13 +23,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lieblings",
+            "outputPath": "dist/pilotonlinestudies",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "src/styles.scss"
+            ],
             "scripts": [],
             "allowedCommonJsDependencies": ["tsparticles"]
           },
@@ -69,17 +74,17 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Client:build",
+            "browserTarget": "pilotonlinestudies:build",
             "sslKey": "ssl/server.key",
             "sslCert": "ssl/server.crt",
             "ssl": true
           },
           "configurations": {
             "production": {
-              "browserTarget": "Client:build:production"
+              "browserTarget": "pilotonlinestudies:build:production"
             },
             "development": {
-              "browserTarget": "Client:build:development"
+              "browserTarget": "pilotonlinestudies:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Client:build"
+            "browserTarget": "pilotonlinestudies:build"
           }
         },
         "test": {
@@ -105,5 +110,5 @@
       }
     }
   },
-  "defaultProject": "lieblings"
+  "defaultProject": "pilotonlinestudies"
 }

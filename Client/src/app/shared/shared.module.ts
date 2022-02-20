@@ -14,6 +14,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import {InputTextModule} from 'primeng/inputtext';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ButtonModule} from 'primeng/button';
 import { HttpClientModule } from '@angular/common/http';
 
 const commonModules = [
@@ -24,7 +27,10 @@ const commonModules = [
   MatCardModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  InputTextModule,
+  CheckboxModule,
+  ButtonModule
 ];
 
 @NgModule({
