@@ -1,0 +1,108 @@
+<div class="mt-155">
+  <div class="container">
+    <div class="grid grid-cols-12 gap-8">
+      <div class="col-span-12 md:col-span-7 xl:col-span-8 border p-5">
+        <h1 class="_title font-medium">{{ product?.name}}</h1>
+        <ul class="product-meta flex flex-wrap items-center mt-8 mb-8">
+          <li class="mr-4">
+            <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)">
+              {{product.rating}}/5 ({{product.feedback}} Feedback)</a
+            >
+          </li>
+          <li class="mr-4">
+            <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)"
+              ><mat-icon class="mr-2">favorite</mat-icon> Save</a
+            >
+          </li>
+
+          <li class="mr-4">
+            <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)"
+              ><mat-icon class="mr-2">share</mat-icon> Share</a
+            >
+          </li>
+        </ul>
+        <img class="w-full" [src]="product?.images[0]" alt="img not found" />
+        <div class="ll-content mt-8">
+          <h6>Theory learning outcomes</h6>
+          <p>
+            {{product.description}}
+          </p>
+          <h6>Theoretical course chapters:</h6>
+          <ul *ngFor="let chapter of product.chapters">
+            <li>
+              {{chapter.name}}
+              <div *ngIf="chapter.subChapters && chapter.subChapters.length > 0">
+                <ul *ngFor="let subChapter of chapter.subChapters">
+                  <li>{{subChapter}}</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <h6>What is included in the mock exams:</h6>
+          <ul class="service-info">
+            <li class="py-2 mr-2">
+              <div class="flex items-center">
+                <mat-icon class="text-primary border-2 rounded-full w-6 h-6 text-center leading-5 mr-2">check</mat-icon>
+                Most up-to-date questions on the relevant topic
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <mat-icon class="text-primary border-2 rounded-full w-6 h-6 text-center leading-5 mr-2">check</mat-icon>
+                100s' of questions so that you will be well prepared for your SACAA exam
+              </div>
+            </li>
+            <li>
+              <div class="flex items-center">
+                <mat-icon class="text-primary border-2 rounded-full w-6 h-6 text-center leading-5 mr-2">check</mat-icon>
+                Dashboard that highlights your exam performance and which areas you are struggling with
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-5 xl:col-span-4">
+        <div class="border">
+          <div class="p-5">
+            <h5>Choose an option below</h5>
+            <div class="flex mt-4">
+              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
+                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
+              </div>
+              <div class="flex-grow">
+                <div class="price sm:float-right font-bold">ZAR {{product.coursePrice}}</div>
+                <h6 class="text-gray-800">Theoretical Course Only</h6>
+              </div>
+            </div>
+            <div class="flex mt-4">
+              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
+                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
+              </div>
+              <div class="flex-grow">
+                <div class="price sm:float-right font-bold">ZAR {{product.mockExamPrice}}</div>
+                <h6 class="text-gray-800">Mock Exam Only</h6>
+              </div>
+            </div>
+            <div class="flex mt-4">
+              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
+                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
+              </div>
+              <div class="flex-grow">
+                <div class="price sm:float-right font-bold">ZAR {{product.bundlePrice}}</div>
+                <h6 class="text-gray-800">Theoretical Course + Mock Exam</h6>
+              </div>
+            </div>
+          </div>
+          <div class="border border-b px-5 pt-10 pb-12 text-center">
+            <p class="text-gray-400 mb-4">Each purchase includes a <strong>one month subscription</strong> from the time of purchase</p>
+            <button mat-flat-button class="py-3 px-20 text-xl font-bold" color="accent">Buy now</button>
+          </div>
+        </div>
+        <div class="border mt-5 px-5 py-10 text-center">
+          <p class="font-bold mb-3">Do you have any special requirements?</p>
+          <button mat-stroked-button class="py-2 px-12 text-lg font-bold text-gray-700">Send us</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
