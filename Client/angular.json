@@ -68,12 +68,18 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "Client:build",
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt",
+            "ssl": true
+          },
           "configurations": {
             "production": {
-              "browserTarget": "lieblings:build:production"
+              "browserTarget": "Client:build:production"
             },
             "development": {
-              "browserTarget": "lieblings:build:development"
+              "browserTarget": "Client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lieblings:build"
+            "browserTarget": "Client:build"
           }
         },
         "test": {
