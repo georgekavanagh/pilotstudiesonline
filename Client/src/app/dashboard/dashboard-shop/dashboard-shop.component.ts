@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { productsDB } from 'src/app/shared/data/product-overview';
 
 @Component({
-  selector: 'll-dashboard-saved-item',
-  templateUrl: './dashboard-saved-item.component.html',
-  styleUrls: ['./dashboard-saved-item.component.scss']
+  selector: 'll-dashboard-shop',
+  templateUrl: './dashboard-shop.component.html',
+  styleUrls: ['./dashboard-shop.component.scss']
 })
-export class DashboardSavedItemComponent implements OnInit {
+export class DashboardShopComponent implements OnInit {
   view = 'list';
 
   products;

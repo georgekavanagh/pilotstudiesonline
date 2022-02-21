@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/shared/providers/custom-validators';
 
 @Component({
@@ -9,8 +10,10 @@ import { CustomValidators } from 'src/app/shared/providers/custom-validators';
 })
 export class SignupComponent implements OnInit {
   form:FormGroup;
+  registeringUser:boolean = false;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -38,7 +41,13 @@ export class SignupComponent implements OnInit {
   }
 
   registerNewUser(){
-    console.log(this.form.value);
+    this.registeringUser = true;
+    let user = {...this.form.value,courses:[],mockExams:[]};
+    setTimeout(()=>{
+      this.registeringUser = false;
+      window.localStorage.setItem('profile',JSON.stringify(user));
+      this.router.navigate(['/auth','login']);
+    },3000)
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { productsDB } from '../../shared/data/products';
+import { productsDB } from '../../shared/data/product-overview';
 
 @Component({
   selector: 'll-product-list',
@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.products = productsDB.Product;
+      this.products = productsDB.ProductOverview;
       this.isLoaded = true
     }, 5000)
   }

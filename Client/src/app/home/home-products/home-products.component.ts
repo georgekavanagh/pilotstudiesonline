@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { productsDB } from '../../shared/data/products';
+import { productsDB } from '../../shared/data/product-overview';
 @Component({
   selector: 'll-home-products',
   templateUrl: './home-products.component.html',
@@ -12,7 +12,7 @@ export class HomeProductsComponent implements OnInit {
   }
 
   getShortenedProductList() {
-    productsDB.Product.forEach((item, index) => {
+    productsDB.ProductOverview.forEach((item, index) => {
       if (index <= 5) {
         this.products.push(item);
       }

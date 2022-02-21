@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardIndexComponent implements OnInit {
   orders = [];
-  constructor() {}
+  
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
     this.orders = [

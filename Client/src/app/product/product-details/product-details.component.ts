@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { productsDB } from 'src/app/shared/data/products';
+import { productsDB } from 'src/app/shared/data/product-overview';
 import * as _ from "underscore";
 
 @Component({
@@ -11,7 +11,7 @@ import * as _ from "underscore";
 export class ProductDetailsComponent implements OnInit {
 
   id:number;
-  products = productsDB.Product;
+  products = productsDB.ProductOverview;
   product:any;
 
   constructor(private route: ActivatedRoute) {
