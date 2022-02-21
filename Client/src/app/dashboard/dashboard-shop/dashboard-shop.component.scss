@@ -17,3 +17,27 @@
     height: $iconSize;
   }
 }
+
+.type-badge{
+  border-radius: 2px;
+  padding: 0.25em 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+
+.Course{
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+.Mock-Exam{
+  background-color: #388e3c;
+  color: #ffffff;
+}
+
+.Bundle{
+  background-color: #379dc6;
+  color: #ffffff;
+}

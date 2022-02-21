@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit {
       dob:'09/04/1995',
       createdDate:'2021-12-23T12:19:39.313Z',
       gender:"male",
-      role:"USER"
+      role:"USER",
+      courses:[],
+      mockExams:[]
     }
 
     this.store.dispatch(new UserActions.AddUser(tempUser));

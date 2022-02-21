@@ -2,7 +2,7 @@ export class productsDB {
     static Product = [
         {
             id: 1,
-            images: ['assets/images/courses/air-law.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/air-law.jpg',
             name: 'PPL Air Law',
             description:"After taking this course, the student will have a better undertanding of laws and procedures that govern every flight."+
             "The student will be able to make out the legal requiremens that have to be met before each flight. This will not only make a safer pilot, but also a pilot that is able to recognise and understand the CATS and CARS in the South African Avaition Legislation and how they apply to their flight.",
@@ -21,7 +21,7 @@ export class productsDB {
         },
         {
             id: 2,
-            images: ['assets/images/courses/principles-of-flight.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/principles-of-flight.jpg',
             name: 'PPL Principles of Flight',
             description:"After taking this course, the student will have a better undertanding of how an aircraft actually flies."+
             "The student will learn about core concepts such as drag and lift and how they are effected by different factors such as density.This course also covers how to calculate an aircrafts weight & balance which is an essential task that every pilot needs to know.",
@@ -42,7 +42,7 @@ export class productsDB {
         },
         {
             id: 3,
-            images: ['assets/images/courses/atg.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/atg.jpg',
             name: 'PPL Aircraft Technical & General',
             description:"After taking this course, the student will have a better undertanding of how aircraft systems work."+
             "The student will cover various topics from engine operation and fault finding, to fuel systems to the electrical system and everything in between.",
@@ -64,7 +64,7 @@ export class productsDB {
         },
         {
             id: 4,
-            images: ['assets/images/courses/meteorology.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/meteorology.jpg',
             name: 'PPL Meteorology',
             description:"After taking this course, the student will have a better undertanding of the atmosphere and how it effects each flight."+
             "The student will learn about global and south african weather patterns and how to identify them as well as important concepts like how density, altitude and temperature effects aircraft performance and many more.",
@@ -89,7 +89,7 @@ export class productsDB {
         },
         {
             id: 5,
-            images: ['assets/images/courses/flight-planning.jpeg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/flight-planning.jpeg',
             name: 'PPL Flight Planning & Performance',
             description:"After taking this course, the student will have a better undertanding of how to plan each flight in order to ensure safety."+
             "The student will learn about the different factors that effect performance of the aircraft and if the conditions allow for a safe flight.The student will also learn how to calculate the necessary fuel requirements for a flight as well as mass & balance.",
@@ -108,7 +108,7 @@ export class productsDB {
         },
         {
             id: 6,
-            images: ['assets/images/courses/human-factors.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/human-factors.jpg',
             name: 'PPL Human Factors',
             description:"After taking this course, the student will have a better undertanding of how our physiology effects our performance in the cockpit."+
             "The student will learn about factors that can negatively effect our body during flight and how to mitigate these factors in order to be safer pilots.",
@@ -130,7 +130,7 @@ export class productsDB {
         },
         {
             id: 7,
-            images: ['assets/images/courses/navigation.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/navigation.jpg',
             name: 'PPL Navigation',
             description:"After taking this course, the student will have a better undertanding of practical navigation and how to read and plot routes on aviation charts.The student will learn about preflight navigation planningas well as how to calculate and measure distance and bearings.",
             chapters:[
@@ -158,7 +158,7 @@ export class productsDB {
         },
         {
             id: 8,
-            images: ['assets/images/courses/radio.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/radio.jpg',
             name: 'PPL Restricted Radio',
             description: 'PPL Restricted Radio Course',
             chapters:[],
@@ -171,7 +171,7 @@ export class productsDB {
         },
         {
             id: 9,
-            images: ['assets/images/courses/night-rating.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/night-rating.jpg',
             name: 'Night Rating',
             description:"After taking this course, the student will have a better undertanding of the aspects and procedures associated with night flying.The student will learn about the requirements that have to be met in order to get a night rating. The student will learn about aircraft and runway lighting and the different illusions that occur during night flying and how to recognise them",
             chapters:[
@@ -190,7 +190,7 @@ export class productsDB {
         },
         {
             id: 10,
-            images: ['assets/images/courses/air-law.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/air-law.jpg',
             name: 'PPL Air Law',
             description:"PPL Air Law Mock Exam",
             chapters:[],
@@ -199,11 +199,11 @@ export class productsDB {
             rating: 4.3,
             feedback: 27,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 11,
-            images: ['assets/images/courses/principles-of-flight.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/principles-of-flight.jpg',
             name: 'PPL Principles of Flight',
             description:"PPL Principles of Flight Mock Exam",
             chapters:[],
@@ -212,11 +212,11 @@ export class productsDB {
             rating: 4.5,
             feedback: 25,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 12,
-            images: ['assets/images/courses/atg.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/atg.jpg',
             name: 'PPL Aircraft Technical & General',
             description:"PPL Aircraft Technical & General Mock Exams",
             chapters:[],
@@ -225,11 +225,11 @@ export class productsDB {
             rating: 4.9,
             feedback: 33,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 13,
-            images: ['assets/images/courses/meteorology.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/meteorology.jpg',
             name: 'PPL Meteorology',
             description:"PPL Meteorology mock exams",
             chapters:[],
@@ -238,11 +238,11 @@ export class productsDB {
             rating: 4.6,
             feedback: 45,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 14,
-            images: ['assets/images/courses/flight-planning.jpeg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/flight-planning.jpeg',
             name: 'PPL Flight Planning & Performance',
             description:"PPL Flight Planning & Performance Mock Exam",
             chapters:[],
@@ -251,11 +251,11 @@ export class productsDB {
             rating: 4.8,
             feedback: 32,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 15,
-            images: ['assets/images/courses/human-factors.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/human-factors.jpg',
             name: 'PPL Human Factors',
             description:"PPL Human Factors Mock Exam",
             chapters:[],
@@ -264,11 +264,11 @@ export class productsDB {
             rating: 5,
             feedback: 19,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 16,
-            images: ['assets/images/courses/navigation.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/navigation.jpg',
             name: 'PPL Navigation',
             description:"PPL Navigation Mock Exams",
             chapters:[],
@@ -277,11 +277,11 @@ export class productsDB {
             rating: 4.7,
             feedback: 25,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 17,
-            images: ['assets/images/courses/radio.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
+            image: 'assets/images/courses/radio.jpg',
             name: 'PPL Restricted Radio',
             description:"PPL Restricted Radio Mock Exams",
             chapters:[],
@@ -290,11 +290,11 @@ export class productsDB {
             rating: 5,
             feedback: 32,
             category: 'PPL',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 18,
-            images: ['assets/images/courses/night-rating.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
+            image: 'assets/images/courses/night-rating.jpg',
             name: 'Night Rating',
             description:"Night Rating Mock Exam",
             chapters:[],
@@ -303,136 +303,45 @@ export class productsDB {
             rating: 5,
             feedback: 15,
             category: 'other',
-            type:'Mock Exam'
+            type:'Mock-Exam'
         },
         {
             id: 19,
-            images: ['assets/images/courses/air-law.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
-            name: 'PPL Air Law',
-            description:"PPL Air Law Course + Mock Exam",
+            image: 'assets/images/courses/night-rating.jpg',
+            name: 'All Courses + Mock Exams',
+            description:"All Courses + Mock Exams",
             chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.3,
-            feedback: 27,
-            category: 'PPL',
+            validityPeriod:3,
+            price: 2000,
+            rating: null,
+            feedback: null,
+            category: 'other',
             type:'Bundle'
         },
         {
             id: 20,
-            images: ['assets/images/courses/principles-of-flight.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Principles of Flight',
-            description:"PPL Principles of Flight Course + Mock Exam",
+            image: 'assets/images/courses/night-rating.jpg',
+            name: 'All Courses',
+            description:"All Courses for PPL",
             chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.5,
-            feedback: 25,
+            validityPeriod:3,
+            price: 1200,
+            rating: null,
+            feedback: null,
             category: 'PPL',
             type:'Bundle'
         },
         {
             id: 21,
-            images: ['assets/images/courses/atg.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Aircraft Technical & General',
-            description:"PPL Aircraft Technical & General Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.9,
-            feedback: 33,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 22,
-            images: ['assets/images/courses/meteorology.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
-            name: 'PPL Meteorology',
-            description:"PPL Meteorology Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.6,
-            feedback: 45,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 23,
-            images: ['assets/images/courses/flight-planning.jpeg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Flight Planning & Performance',
-            description:"PPL Flight Planning & Performance Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.8,
-            feedback: 32,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 24,
-            images: ['assets/images/courses/human-factors.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Human Factors',
-            description:"PPL Human Factors Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 5,
-            feedback: 19,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 25,
-            images: ['assets/images/courses/navigation.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Navigation',
-            description:"PPL Navigation Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 4.7,
-            feedback: 25,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 26,
-            images: ['assets/images/courses/radio.jpg', 'assets/images/products/01-2.png', 'assets/images/products/01-3.png'],
-            name: 'PPL Restricted Radio',
-            description:"PPL Restricted Radio Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 5,
-            feedback: 32,
-            category: 'PPL',
-            type:'Bundle'
-        },
-        {
-            id: 27,
-            images: ['assets/images/courses/night-rating.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
-            name: 'Night Rating',
-            description:"Night Rating Course + Mock Exam",
-            chapters:[],
-            validityPeriod:1,
-            price: 250,
-            rating: 5,
-            feedback: 15,
-            category: 'other',
-            type:'Bundle'
-        },
-        {
-            id: 28,
-            images: ['assets/images/courses/night-rating.jpg', 'assets/images/products/02-2.png', 'assets/images/products/02-3.png'],
-            name: 'All Courses + Mock Exams',
-            description:"All Courses + Mock Exams",
+            image: 'assets/images/courses/night-rating.jpg',
+            name: 'All Mock Exams',
+            description:"All Mock Exams for PPL",
             chapters:[],
             validityPeriod:3,
-            price: 1500,
-            rating: 5,
-            feedback: 15,
-            category: 'other',
+            price: 1200,
+            rating: null,
+            feedback: null,
+            category: 'PPL',
             type:'Bundle'
         }
     ]

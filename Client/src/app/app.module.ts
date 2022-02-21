@@ -8,16 +8,16 @@ import { SharedModule } from './shared/shared.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
-import { courseReducer } from './reducers/course.reducer';
-import { mockExamReducer } from './reducers/mock-exam.reducer'
+import { cartReducer } from './reducers/cart.reducer';
+import { favouritesReducer } from './reducers/favourites.reducer';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule, 
   StoreModule.forRoot({
     user : userReducer,
-    courses : courseReducer,
-    mockExams : mockExamReducer
+    cart : cartReducer,
+    favourites : favouritesReducer
   })],
   providers: [],
   bootstrap: [AppComponent]

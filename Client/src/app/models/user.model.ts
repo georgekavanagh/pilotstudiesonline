@@ -1,3 +1,6 @@
+import { Course } from "./course.model";
+import { MockExam } from "./mock-exam.model";
+
 export interface User{
     id:number,
     firstName:string,
@@ -7,5 +10,7 @@ export interface User{
     createdDate:string,
     gender:string,
     dob:string,
-    role:string
+    role:string,
+    courses:Course[],
+    mockExams:MockExam[]
 }

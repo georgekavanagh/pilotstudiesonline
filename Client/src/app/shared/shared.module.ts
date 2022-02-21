@@ -13,10 +13,17 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
+import {TableModule} from 'primeng/table';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {DialogModule} from 'primeng/dialog';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {BadgeModule} from 'primeng/badge';
 import { HttpClientModule } from '@angular/common/http';
 
 const commonModules = [
@@ -28,9 +35,16 @@ const commonModules = [
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatListModule,
+  MatExpansionModule,
   InputTextModule,
   CheckboxModule,
-  ButtonModule
+  ButtonModule,
+  DropdownModule,
+  TableModule,
+  DialogModule,
+  ProgressSpinnerModule,
+  SplitButtonModule,
+  BadgeModule
 ];
 
 @NgModule({
