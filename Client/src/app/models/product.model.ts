@@ -3,7 +3,6 @@ export interface Product{
     name:string,
     description:string,
     image:string,
-    chapters:any[],
     validityPeriod:number,
     price:string,
     rating:number,

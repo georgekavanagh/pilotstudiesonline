@@ -11,9 +11,7 @@ namespace Infrastructure.Data
         {
         }
 
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<CourseRating> CourseRatings { get; set; }
-        public DbSet<CourseType> CourseTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
