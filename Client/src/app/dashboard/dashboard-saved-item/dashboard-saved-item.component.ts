@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { productsDB } from 'src/app/shared/data/product-overview';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'll-dashboard-saved-item',
@@ -7,12 +9,17 @@ import { productsDB } from 'src/app/shared/data/product-overview';
   styleUrls: ['./dashboard-saved-item.component.scss']
 })
 export class DashboardSavedItemComponent implements OnInit {
-  view = 'list';
+  favourites:Product[] = [];
+  constructor(private store: Store<AppState>) {
+    this.getFavourites()
+  }
 
-  products;
-  constructor() {}
+  getFavourites(){
+    this.store.select('favourites').subscribe(latestFavourites =>{
+      this.favourites = latestFavourites;
+    });
+  }
 
   ngOnInit(): void {
-    this.products = productsDB.ProductOverview;
   }
 }

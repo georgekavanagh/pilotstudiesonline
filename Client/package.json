@@ -30,6 +30,7 @@
     "primeicons": "^5.0.0",
     "primeng": "^12.2.3",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^11.4.4",
     "tslib": "^2.0.0",
     "tsparticles": "^1.24.3",
     "underscore": "^1.13.2",

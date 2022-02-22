@@ -24,6 +24,7 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {BadgeModule} from 'primeng/badge';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { HttpClientModule } from '@angular/common/http';
 
 const commonModules = [
@@ -44,6 +45,7 @@ const commonModules = [
   DialogModule,
   ProgressSpinnerModule,
   SplitButtonModule,
+  OverlayPanelModule,
   BadgeModule
 ];
 

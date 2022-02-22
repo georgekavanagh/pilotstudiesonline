@@ -49,11 +49,12 @@
                 title="Add To Cart"
                 icon="pi pi-shopping-cart" 
                 class="p-button-rounded p-button-secondary mr-2"
-                (click)="addProductToCart()"></button>
+                (click)="addProductToCart(item)"></button>
                 <button pButton pRipple type="button" 
                 title="Add To Favourites"
                 icon="pi pi-heart" 
-                class="p-button-rounded p-button-danger"></button>
+                class="p-button-rounded p-button-danger"
+                (click)="addProductToFavourites(item)"></button>
               </td>
           </tr>
       </ng-template>
@@ -68,7 +69,8 @@
   </div>
 </div>
 
-<p-dialog header="Adding product to cart" [(visible)]="addingToCart" [style]="{width: '40vw'}"
+<p-dialog [header]="(addingToCart)?'Adding product to cart':'Adding product to favourites'" 
+[(visible)]="addingToCart || addingToFavourites" [style]="{width: '40vw'}"
 modal="true" appendTo="body" [closable]="false">
   <div class="flex flex-col items-center">
     <p-progressSpinner></p-progressSpinner>
