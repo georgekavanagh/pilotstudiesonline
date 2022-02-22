@@ -11,7 +11,6 @@ namespace Infrastructure.Data.Config
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p => p.Name).IsRequired().HasMaxLength(100);
             builder.Property(p => p.Description).HasMaxLength(255);
-            builder.Property(p => p.Price).HasColumnType("decimal(18,2)"); 
             builder.Property(p => p.Rating).HasColumnType("decimal(18,2)");    
         }
     }
