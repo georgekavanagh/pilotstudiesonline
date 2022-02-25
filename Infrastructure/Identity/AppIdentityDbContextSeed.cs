@@ -12,7 +12,11 @@ namespace Infrastructure.Identity
                     LastName = "Kavanagh",
                     Email = "george.kavanagh16@gmail.com",
                     UserName = "george.kavanagh16@gmail.com",
-                    PhoneNumber = "+27725473665"
+                    Mobile = null,
+                    CreatedDate = "2022-02-25 19:31:00",
+                    DOB = null,
+                    Gender = null,
+                    Role = "ADMIN"
                 };
                 await userManager.CreateAsync(user,"Pa$$w0rd");
             }

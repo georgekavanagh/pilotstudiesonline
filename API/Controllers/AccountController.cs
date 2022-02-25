@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using API.DTOs;
+using API.Errors;
 using Core.Entities.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -50,14 +51,14 @@ namespace API.Controllers
             if (user == null)
             {
                 //Add API response
-                return Unauthorized();
+                return Unauthorized(new ApiResponse(401));
             }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
             if (!result.Succeeded)
             {
                 //Add API response
-                return Unauthorized();
+                return Unauthorized(new ApiResponse(401));
             }
 
             return new UserDto
@@ -65,19 +66,34 @@ namespace API.Controllers
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                CreatedDate = user.CreatedDate.ToString(),
+                DOB = user.DOB,
+                Mobile = user.Mobile,
+                Gender = user.Gender,
+                Role = user.Role
             };
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
+            if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
+            {
+                return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new[] {"Email address is in use"}});
+            }
+
             var user = new AppUser
             {
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
                 Email = registerDto.Email,
                 UserName = registerDto.Email,
+                CreatedDate = DateTime.Today.ToString(),
+                DOB = null,
+                Mobile = null,
+                Gender = null,
+                Role = "USER"
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -85,15 +101,19 @@ namespace API.Controllers
             if (!result.Succeeded)
             {
                 //Add API response
-                return BadRequest();
+                return BadRequest(new ApiResponse(400));
             }
 
             return new UserDto
             {
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user),
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                CreatedDate = user.CreatedDate,
+                DOB = null,
+                Mobile = null,
+                Gender = null,
+                Role = "USER"
             };
         }
     }

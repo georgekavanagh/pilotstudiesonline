@@ -23,21 +23,24 @@ export class DashboardProfileComponent implements OnInit {
     this.store.select('user').subscribe(latestUser =>{
       if(latestUser && latestUser.length > 0){
         this.user = latestUser[0];
+        console.log(latestUser[0], 'user1')
       }else{
         // get user from server by id
-        this.user = {
-          id:1,
-          firstName:'George',
-          lastName:'Kavanagh',
-          email:'george.kavanagh',
-          mobile:'+27725473665',
-          dob:'09/04/1995',
-          createdDate:'2021-12-23T12:19:39.313Z',
-          gender:"male",
-          role:"USER",
-          courses:[],
-          mockExams:[]
-        }
+        this.user = JSON.parse(window.localStorage.getItem('profile'));
+        console.log(this.user, 'user2')
+        // this.user = {
+        //   id:1,
+        //   firstName:'George',
+        //   lastName:'Kavanagh',
+        //   email:'george.kavanagh',
+        //   mobile:'+27725473665',
+        //   dob:'09/04/1995',
+        //   createdDate:'2021-12-23T12:19:39.313Z',
+        //   gender:"male",
+        //   role:"USER",
+        //   courses:[],
+        //   mockExams:[]
+        // }
       }
     })
   }

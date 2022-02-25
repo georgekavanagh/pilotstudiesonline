@@ -29,6 +29,12 @@ namespace Infrastructure.Identity.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DOB")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
@@ -39,6 +45,9 @@ namespace Infrastructure.Identity.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Gender")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
@@ -46,6 +55,9 @@ namespace Infrastructure.Identity.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mobile")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")
@@ -64,6 +76,9 @@ namespace Infrastructure.Identity.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");

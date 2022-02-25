@@ -42,7 +42,7 @@
 						Number:
 					</div>
 					<div class="ll-dataset__value">
-						{{user?.mobile}}
+						{{user?.mobile ?? 'N/A'}}
 					</div>
 				</div>
 			</div>
@@ -85,7 +85,18 @@
 						{{user?.firstName}}
 					</div>
 				</div>
+				
 				<div class="ll-dataset mt-4">
+					<div class="ll-dataset__label">
+						Gender:
+					</div>
+					<div class="ll-dataset__value">
+						{{user?.gender ?? 'N/A'}}
+					</div>
+				</div>
+			</div>
+			<div class="w-full sm:w-1/2 mt-4 sm:mt-0">
+				<div class="ll-dataset">
 					<div class="ll-dataset__label">
 						Last Name:
 					</div>
@@ -95,36 +106,10 @@
 				</div>
 				<div class="ll-dataset mt-4">
 					<div class="ll-dataset__label">
-						Gender:
-					</div>
-					<div class="ll-dataset__value">
-						{{user?.gender}}
-					</div>
-				</div>
-				<div class="ll-dataset mt-4">
-					<div class="ll-dataset__label">
 						Date of Birth:
 					</div>
 					<div class="ll-dataset__value">
-						{{user?.dob}}
-					</div>
-				</div>
-			</div>
-			<div class="w-full sm:w-1/2 mt-4 sm:mt-0">
-				<div class="ll-dataset">
-					<div class="ll-dataset__label">
-						Contact Number:
-					</div>
-					<div class="ll-dataset__value">
-						{{user?.mobile}}
-					</div>
-				</div>
-				<div class="ll-dataset mt-4">
-					<div class="ll-dataset__label">
-						Organization:
-					</div>
-					<div class="ll-dataset__value">
-						Personal Account
+						{{user?.dob ?? 'N/A'}}
 					</div>
 				</div>
 			</div>

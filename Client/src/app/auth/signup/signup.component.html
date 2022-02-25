@@ -42,7 +42,10 @@
               class="rounded w-full" autocomplete="new-password" name="password"
               [ngClass]="{'ng-invalid ng-dirty':form.get('password').touched && form.get('password').errors}"/>
             <small *ngIf="form.get('password').touched && form.get('password').errors?.required" class="text-red-500">Password is required</small>
-          
+            <small *ngIf="form.get('password').touched && form.get('password').errors" class="text-red-500">
+              Complex Password is required
+              <i class="ml-2 mt-2 pi pi-question-circle" title="Must be minimum of 8 characters. Must contain an upper & lowercase letter. Must contain at least one number and a special character."></i>
+            </small>
           </div>
           <div class="mb-6 mt-6">
             <label class="block text-gray-700 text-sm font-semibold mb-2" for="password2"> Confirmation Password </label>
@@ -56,14 +59,6 @@
               <small *ngIf="form.get('confirmPassword').touched && form.get('confirmPassword').errors?.mustMatch" class="text-red-500">Passwords do not match</small>
             </div>
           </div>
-          <div class="flex items-center mb-6">
-            <p-checkbox formControlName="acceptTerms" [binary]="true"></p-checkbox>
-            <label
-            class="ml-2 block text-sm text-gray-900"
-            [ngClass]="{'text-red-500':form.get('acceptTerms').touched && form.get('acceptTerms').errors}">
-             I agree with lieblings Terms and conditions. 
-            </label>
-          </div>
           <button pButton [loading]="registeringUser"
               class="p-button-raised p-button-secondary w-full"
               type="submit" label="Sign up">
@@ -75,6 +70,9 @@
         </div>
         <div class="mt-4">
           <a [routerLink]="['/']"  class="text-gray-700 text-sm hover:text-accent inline-flex items-center"><mat-icon class="h-4 w-4 leading-4 text-lg mr-2">keyboard_backspace</mat-icon>Go to Home</a>
+        </div>
+        <div class="mt-4">
+          <p-messages></p-messages>
         </div>
       </div>
     </div>
