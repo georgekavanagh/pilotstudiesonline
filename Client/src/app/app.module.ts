@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
 import { favouritesReducer } from './reducers/favourites.reducer';
+import { CartService } from './cart/service/cart.service';
+import { EffectsModule } from '@ngrx/effects';
+import { CartEffects } from './effects/cart.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +21,9 @@ import { favouritesReducer } from './reducers/favourites.reducer';
     user : userReducer,
     cart : cartReducer,
     favourites : favouritesReducer
-  })],
-  providers: [],
+  }), 
+  EffectsModule.forRoot([CartEffects])],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -7,13 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
   @Input() center: boolean;
-  show: boolean = true;
+  @Input() show: boolean = false;
+  @Input() loadingMsg: string = "Please wait...";
+  
 
   constructor() { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.show = false;
-    }, 2500);
+    
   }
 }

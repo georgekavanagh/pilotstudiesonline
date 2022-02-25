@@ -25,8 +25,9 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task DeleteBasketAsync(string id){
-            await _basketRepository.DeleteBasketAsync(id);
+        public async Task<ActionResult<bool>> DeleteBasketAsync(string id){
+            var deleted = await _basketRepository.DeleteBasketAsync(id);
+            return Ok(deleted);
         }
     }
 }

@@ -8,6 +8,8 @@ import * as CartActions from '../../actions/cart.actions';
 import * as FavouritesActions from '../../actions/favourites.actions';
 import * as _ from "underscore";
 import Swal from 'sweetalert2'
+import { Cart } from 'src/app/models/cart.model';
+import { CartItem } from 'src/app/models/cart-item.model';
 
 @Component({
   selector: 'll-dashboard-shop',
@@ -20,7 +22,7 @@ export class DashboardShopComponent implements OnInit {
   productTypes:SelectItem[] = [];
   addingToCart: boolean = false;
   addingToFavourites: boolean = false;
-  existingCart:Product[] = [];
+  existingCart:Cart;
   existingFavourites:Product[] = [];
   products;
   constructor(private store: Store<AppState>) {}
@@ -41,7 +43,7 @@ export class DashboardShopComponent implements OnInit {
   }
 
   getCartAndFavourites(){
-    this.store.select('cart').subscribe(latestCart =>{
+    this.store.select('cart').subscribe((latestCart:Cart) =>{
       this.existingCart = latestCart;
     });
     this.store.select('favourites').subscribe(latestFavourites =>{
@@ -50,8 +52,15 @@ export class DashboardShopComponent implements OnInit {
   }
 
   addProductToCart(product:Product){
+    let cart:CartItem = {
+      id:product.id,
+      productName:product.name,
+      productType:product.type,
+      price:product.price,
+      image:product.image
+    }
     //Checks if the product already exists in the cart
-    if(_.find(this.existingCart,(item)=>{return item.id === product.id})){
+    if(_.find(this.existingCart.items,(item)=>{return item.id === product.id})){
       Swal.fire({
         icon:'warning',
         title: 'Warning',
@@ -66,7 +75,7 @@ export class DashboardShopComponent implements OnInit {
     }else{
       this.addingToCart = true;
       setTimeout(()=>{
-        this.store.dispatch(new CartActions.AddToCart(product));
+        this.store.dispatch(new CartActions.AddToCart(cart));
         this.addingToCart = false;
       },2000)
     }

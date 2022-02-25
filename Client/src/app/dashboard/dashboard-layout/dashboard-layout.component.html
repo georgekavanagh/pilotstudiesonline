@@ -64,21 +64,21 @@
             </button>
             <div class="items-center flex ml-auto">
               <button mat-icon-button (click)="op.toggle($event)">
-                <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="(cart && cart.length > 0)?cart.length:'0'" severity="danger"></i>
+                <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="(cart$ | async)?.items?.length" severity="danger"></i>
               </button>
               <button mat-icon-button>
                 <i class="pi pi-heart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" 
-                [value]="favourites.length"></i>
+                [value]="(favourites$ | async)?.length"></i>
               </button>
               <p-overlayPanel #op [style]="{width: '600px'}">
-                <ng-template pTemplate>
-                  <div *ngIf="cart && cart.length === 0" class="text-center">
+                <ng-template pTemplate *ngIf="cart$ | async as cartObj">
+                  <div *ngIf="cartObj?.items.length === 0" class="text-center">
                     <h5>
                       Cart is empty
                     </h5>
                   </div>
-                  <div *ngIf="cart && cart.length > 0" >
-                    <p-table [value]="cart" responsiveLayout="scroll">
+                  <div *ngIf="cartObj?.items.length > 0" >
+                    <p-table [value]="cartObj.items" responsiveLayout="scroll">
                       <ng-template pTemplate="header">
                           <tr>
                             <th>Type</th>
@@ -89,13 +89,13 @@
                       </ng-template>
                       <ng-template pTemplate="body" let-rowData let-product>
                           <tr>
-                            <td>{{product?.type}}</td>
+                            <td>{{product?.productType}}</td>
                             <td class="w-6/12">
                               <div class="flex">
                                 <div class="max-h-16 w-16 flex-none mr-3 border" *ngIf="product?.image">
                                   <img [src]="product?.image" alt="img">
                                 </div>
-                                <h6 class="flex-auto">{{ product?.name }}</h6>
+                                <h6 class="flex-auto">{{ product?.productName }}</h6>
                               </div>
                             </td>
                             <td>{{(product && product.price)?'R '+product.price:'R '+0}}</td>
@@ -110,7 +110,7 @@
                               <td colspan="2" class="p-text-right bold">
                                 Totals:
                               </td>
-                              <td class="bold">{{'R '+cartTotal}}</td>
+                              <td class="bold">{{calculateCartTotal(cartObj)}}</td>
                               <td>&nbsp;</td>
                           </tr>
                       </ng-template>

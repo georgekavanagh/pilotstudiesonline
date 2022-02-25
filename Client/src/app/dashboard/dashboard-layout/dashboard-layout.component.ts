@@ -2,7 +2,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
+import { Cart } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import * as CartActions from '../../actions/cart.actions';
@@ -15,21 +17,30 @@ import * as CartActions from '../../actions/cart.actions';
 export class DashboardLayoutComponent implements OnInit {
   isLessThenLargeDevice;
   user:User;
-  cart:Product[] = [];
-  favourites:Product[] = [];
-  cartTotal:number;
+  cart$:Observable<Cart>;
+  favourites$:Observable<Product[]>
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router,
     private store: Store<AppState>) {
+    this.cart$ = this.store.select('cart');
+    this.favourites$ = this.store.select('favourites');
+    this.getCart();
     this.getLoggedInUser();
-    this.getUserCart();
-    this.getUserFavourites();
   }
 
   ngOnInit(): void {
     this.breakpointObserver.observe(['(max-width: 1199px)']).subscribe(({ matches }) => {
       this.isLessThenLargeDevice = matches;
     });
+
+    this.store.select('cart').subscribe(res=>{
+      console.log(res,'cart')
+    })
+    
+  }
+
+  getCart(){
+    this.store.dispatch(new CartActions.LoadCart('george.kavanagh16@gmail.com'));
   }
 
   getLoggedInUser(){
@@ -56,29 +67,16 @@ export class DashboardLayoutComponent implements OnInit {
     })
   }
 
-  getUserCart(){
-    this.store.select('cart').subscribe((latestCart:Product[]) =>{
-      this.cart = latestCart;
-      this.calculateCartTotal();
+  calculateCartTotal(cart:Cart):string{
+    let cartTotal = 0;
+    cart.items.forEach(item=>{
+      cartTotal += Number(item.price);
     });
-  }
-
-  calculateCartTotal(){
-    this.cartTotal = 0;
-    this.cart.forEach(item=>{
-      this.cartTotal += Number(item.price);
-    })
+    return "R " +cartTotal;
   }
 
   removeProductFromCart(product){
     this.store.dispatch(new CartActions.RemoveFromCart(product.id));
-  }
-
-  getUserFavourites(){
-    this.store.select('favourites').subscribe((latestFavourites:Product[]) =>{
-      console.log(latestFavourites)
-      this.favourites = latestFavourites;
-    });
   }
 
   onLogout(): void {
