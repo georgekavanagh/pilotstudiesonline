@@ -15,19 +15,70 @@ export class CartEffects {
     private cartService: CartService
   ) {}
 
-  // Run this code when a loadTodos action is dispatched
-  loadTodos$ = createEffect(() =>
+  // Run this code when a loadCart action is dispatched
+  loadCart$ = createEffect(() =>
     this.actions$.pipe(
       ofType<CartActions.LoadCart>(CartActions.LOAD_CART),
       switchMap((action) =>
-        // Call the getTodos method, convert it to an observable
         from(this.cartService.getCart(action.payload)).pipe(
-          // Take the returned value and return a new success action containing the todos
           map((cart) => new CartActions.LoadCartSuccess(cart)),
-          // Or... if it errors return a new failure action containing the error
           catchError((error) => of(new CartActions.LoadCartFailure(error)))
         )
       )
     )
   );
+
+  saveToCart$ = createEffect(
+    () =>
+    this.actions$.pipe(
+      ofType<CartActions.AddToCart>(CartActions.ADD_TO_CART),
+      switchMap(action =>
+        of(action).pipe(
+          withLatestFrom(
+            this.store.select('cart')
+          ),
+          switchMap(([action, latest]) => {
+            return from((this.cartService.saveCart(latest)).pipe(
+              map((cart) => new CartActions.AddToCartSuccess(cart)),
+              catchError((error) => of(new CartActions.AddToCartFailure(action.payload.id)))
+            ));
+          })
+        )
+      )
+    )
+  );
+
+  removeFromCart$ = createEffect(
+    () =>
+    this.actions$.pipe(
+      ofType<CartActions.RemoveFromCart>(CartActions.REMOVE_FROM_CART),
+      switchMap(action =>
+        of(action).pipe(
+          withLatestFrom(
+            this.store.select('cart')
+          ),
+          switchMap(([action, latest]) => {
+            return from((this.cartService.saveCart(latest)).pipe(
+              map((cart) => new CartActions.RemoveFromCartSuccess(cart)),
+              catchError((error) => of(new CartActions.RemoveFromCartFailure(action.payload)))
+            ));
+          })
+        )
+      )
+    )
+  );
 }
+
+// from(
+          
+
+
+        // this.actions$.pipe(
+        //   ofType<CartActions.AddToCart>(CartActions.ADD_TO_CART),
+        //   withLatestFrom(this.store.select('cart')),
+        //   map(([first, second])=>{
+            
+        //   })
+          
+        
+        // ),

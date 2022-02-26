@@ -7,5 +7,4 @@ import { Cart } from "./models/cart.model";
 export interface AppState{
     readonly user:User[];
     readonly cart: Cart;
-    readonly favourites:Product[];
 }

@@ -8,6 +8,7 @@ import { Cart } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import * as CartActions from '../../actions/cart.actions';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'll-dashboard-layout',
@@ -23,20 +24,15 @@ export class DashboardLayoutComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private router: Router,
     private store: Store<AppState>) {
     this.cart$ = this.store.select('cart');
-    this.favourites$ = this.store.select('favourites');
     this.getCart();
     this.getLoggedInUser();
+    this.showCartErrorMsgs()
   }
 
   ngOnInit(): void {
     this.breakpointObserver.observe(['(max-width: 1199px)']).subscribe(({ matches }) => {
       this.isLessThenLargeDevice = matches;
     });
-
-    this.store.select('cart').subscribe(res=>{
-      console.log(res,'cart')
-    })
-    
   }
 
   getCart(){
@@ -76,10 +72,22 @@ export class DashboardLayoutComponent implements OnInit {
   }
 
   removeProductFromCart(product){
-    this.store.dispatch(new CartActions.RemoveFromCart(product.id));
+    this.store.dispatch(new CartActions.RemoveFromCart(product));
   }
 
   onLogout(): void {
     this.router.navigate(['auth/login']);
+  }
+
+  showCartErrorMsgs(){
+    this.store.select('cart').subscribe((latestCart:Cart) =>{
+      if(latestCart.status == 'error removing from cart'){
+        Swal.fire(
+          'Failure',
+          'The product failed to be removed from the cart',
+          'error'
+        )
+      }
+    });
   }
 }

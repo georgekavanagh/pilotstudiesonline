@@ -10,6 +10,7 @@ import * as _ from "underscore";
 import Swal from 'sweetalert2'
 import { Cart } from 'src/app/models/cart.model';
 import { CartItem } from 'src/app/models/cart-item.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'll-dashboard-shop',
@@ -20,12 +21,13 @@ export class DashboardShopComponent implements OnInit {
   view = 'list';
   advanceSearchExpanded: boolean = false;
   productTypes:SelectItem[] = [];
-  addingToCart: boolean = false;
   addingToFavourites: boolean = false;
   existingCart:Cart;
-  existingFavourites:Product[] = [];
   products;
-  constructor(private store: Store<AppState>) {}
+  status$:Observable<Cart>;
+  constructor(private store: Store<AppState>) {
+    this.status$ = this.store.select('cart');
+  }
 
   ngOnInit(): void {
     this.getProductTypes();
@@ -45,14 +47,18 @@ export class DashboardShopComponent implements OnInit {
   getCartAndFavourites(){
     this.store.select('cart').subscribe((latestCart:Cart) =>{
       this.existingCart = latestCart;
-    });
-    this.store.select('favourites').subscribe(latestFavourites =>{
-      this.existingFavourites = latestFavourites;
+      if(latestCart.status == 'error adding to cart'){
+        Swal.fire(
+          'Failure',
+          'The product failed to be added to the cart',
+          'error'
+        )
+      }
     });
   }
 
   addProductToCart(product:Product){
-    let cart:CartItem = {
+    let cartItem:CartItem = {
       id:product.id,
       productName:product.name,
       productType:product.type,
@@ -73,34 +79,7 @@ export class DashboardShopComponent implements OnInit {
         }
       })
     }else{
-      this.addingToCart = true;
-      setTimeout(()=>{
-        this.store.dispatch(new CartActions.AddToCart(cart));
-        this.addingToCart = false;
-      },2000)
-    }
-  }
-
-  addProductToFavourites(product:Product){
-    //Checks if the product already exists in the favourites list
-    if(_.find(this.existingFavourites,(item)=>{return item.id === product.id})){
-      Swal.fire({
-        icon:'warning',
-        title: 'Warning',
-        text:'Product has already been added to your favourites list',
-        showClass: {
-          popup: 'animate__animated animate__fadeInDown'
-        },
-        hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
-      })
-    }else{
-      this.addingToFavourites = true;
-      setTimeout(()=>{
-        this.store.dispatch(new FavouritesActions.AddToFavourites(product));
-        this.addingToFavourites = false;
-      },2000)
+      this.store.dispatch(new CartActions.AddToCart(cartItem));
     }
   }
 }

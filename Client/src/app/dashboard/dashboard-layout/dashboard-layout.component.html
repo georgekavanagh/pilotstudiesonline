@@ -31,13 +31,6 @@
           >
           <a
             mat-list-item
-            routerLink="/dashboard/saved-items"
-            routerLinkActive="bg-gray-200"
-            class="font-semibold text-gray-500 hover:text-primary"
-            ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
-          >
-          <a
-            mat-list-item
             routerLink="/dashboard/orders"
             routerLinkActive="bg-gray-200"
             class="font-semibold text-gray-500 hover:text-primary"
@@ -65,10 +58,6 @@
             <div class="items-center flex ml-auto">
               <button mat-icon-button (click)="op.toggle($event)">
                 <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="(cart$ | async)?.items?.length" severity="danger"></i>
-              </button>
-              <button mat-icon-button>
-                <i class="pi pi-heart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" 
-                [value]="(favourites$ | async)?.length"></i>
               </button>
               <p-overlayPanel #op [style]="{width: '600px'}">
                 <ng-template pTemplate *ngIf="cart$ | async as cartObj">
@@ -159,13 +148,6 @@
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2">shopping_basket</mat-icon> Shop</a
-                    >
-                    <a
-                      mat-list-item
-                      routerLink="/dashboard/saved-items"
-                      routerLinkActive="bg-gray-200"
-                      class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">list</mat-icon> Saved Items</a
                     >
                     <a
                       mat-list-item
