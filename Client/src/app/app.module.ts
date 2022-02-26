@@ -13,17 +13,26 @@ import { favouritesReducer } from './reducers/favourites.reducer';
 import { CartService } from './cart/service/cart.service';
 import { EffectsModule } from '@ngrx/effects';
 import { CartEffects } from './effects/cart.effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpIntercept } from './shared/http-interceptor/http.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule, 
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, NgxSkeletonLoaderModule,  
   StoreModule.forRoot({
     user : userReducer,
     cart : cartReducer,
     favourites : favouritesReducer
   }), 
   EffectsModule.forRoot([CartEffects])],
-  providers: [CartService],
+  providers: [
+    CartService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:HttpIntercept,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

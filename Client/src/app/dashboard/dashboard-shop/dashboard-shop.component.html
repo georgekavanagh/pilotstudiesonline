@@ -1,6 +1,6 @@
 <div>
   <div class="table-inside">
-    <p-table #dt [value]="products"
+    <p-table #dt [value]="products" [loading]="gettingProducts"
     [globalFilterFields]="['name','type']">
       <ng-template pTemplate="caption">
         <div class="table-header flex flex-row justify-between">

@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
 import { Cart } from 'src/app/models/cart.model';
 import { CartItem } from 'src/app/models/cart-item.model';
 import { Observable } from 'rxjs';
+import { ProductService } from 'src/app/product/shared/product.service';
 
 @Component({
   selector: 'll-dashboard-shop',
@@ -20,19 +21,32 @@ import { Observable } from 'rxjs';
 export class DashboardShopComponent implements OnInit {
   view = 'list';
   advanceSearchExpanded: boolean = false;
+  gettingProducts: boolean = false;
   productTypes:SelectItem[] = [];
-  addingToFavourites: boolean = false;
   existingCart:Cart;
   products;
   status$:Observable<Cart>;
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,private productService:ProductService) {
     this.status$ = this.store.select('cart');
   }
 
   ngOnInit(): void {
+    this.getAllProducts();
     this.getProductTypes();
     this.getCartAndFavourites();
-    this.products = productsDB.Product;
+  }
+
+  getAllProducts(){
+    this.gettingProducts = true;
+    setTimeout(()=>{
+      this.productService.getAllProducts().subscribe((products:Product[])=>{
+        this.products = products;
+        this.gettingProducts = false;
+      },error=>{
+        this.products = [];
+        this.gettingProducts = false;
+      })
+    },2000)
   }
 
   getProductTypes(){
