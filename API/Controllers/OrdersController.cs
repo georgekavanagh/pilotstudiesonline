@@ -27,5 +27,41 @@ namespace API.Controllers
             }
             return Ok(order);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<Order>>> GetOrdersForUser()
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var orders = await _orderService.GetOrdersForUserAsync(email);
+            
+            return Ok(orders);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrderByIdForUser(int id)
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var order = await _orderService.GetOrderByIdAsync(id,email);
+            if(order == null){
+                return NotFound(new ApiResponse(404, "No orders for the specified user"));
+            }
+            return Ok(order);
+        }
+
+        [HttpPut("cancel")]
+        public async Task<ActionResult<Order>> CancelOrder(OrderIdDto orderIdDto)
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var order = await _orderService.GetOrderByIdAsync(orderIdDto.Id,email);
+            if(order == null){
+                return BadRequest(new ApiResponse(400, "Problem cancelling order"));
+            }
+            order.Status = Core.Entities.OrderAggregate.OrderStatus.Cancelled;
+            var cancelledOrder = await _orderService.UpdateOrderAsync(order);
+            return Ok(order);
+        }
     }
 }

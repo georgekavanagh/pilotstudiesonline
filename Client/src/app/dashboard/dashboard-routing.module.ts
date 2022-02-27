@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-checkout.component';
 import { DashboardIndexComponent } from './dashboard-index/dashboard-index.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
@@ -23,6 +24,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'orders',
     component: DashboardOrderComponent
+  },
+  {
+    path: 'checkout',
+    component: DashboardCheckoutComponent
   }
 ];
 

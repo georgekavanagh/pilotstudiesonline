@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardOrderService } from './shared/dashboard-order.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-dashboard-order',
@@ -7,83 +9,93 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardOrderComponent implements OnInit {
   orders = [];
+  loadingOrders:boolean = false;
+  cancellingOrder:boolean = false;
+  btnOptions:any[] = [];
 
-  constructor() {}
+  constructor(private dashboardOrderService:DashboardOrderService) {}
 
   ngOnInit(): void {
-    this.orders = [
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'pending',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'rejected',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'initialized',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'pending',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Lynch Dean',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'rejected',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'initialized',
-        price: 2145.0
-      },
-      {
-        id: 'e5dcdfsf',
-        orderBy: 'Dean Lynch',
-        productId: 'cdfsfe5d',
-        created: '25.05.2021, 10:00',
-        status: 'complated',
-        price: 2145.0
+    this.getOrders();
+  }
+
+  getOrders(){
+    this.loadingOrders = true;
+    setTimeout(()=>{
+      this.dashboardOrderService.getUserOrders().subscribe((orders:any[])=>{
+        this.loadingOrders = false;
+        this.orders = orders;
+      },error=>{
+        this.loadingOrders = false;
+        this.orders = [];
+      })
+    },2000)
+  }
+
+  getStatusName(status){
+    switch (status){
+      case 0:
+        return 'Pending';
+      case 1:
+        return 'Payment Received';
+      case 2:
+        return 'Payment Failed';
+      case 3:
+        return 'Cancelled'
+    }
+  }
+
+  initBtnOptions(order){
+    this.btnOptions = [];
+    if(order.status !== 3){
+      this.btnOptions.push({label: 'Cancel Order', icon: 'pi pi-trash', command: () => {
+        this.confirmCancel(order);
+      }})
+    }
+    if(order.status === 0){
+      this.btnOptions.push({label: 'Confirm Order', icon: 'pi pi-check-circle', command: () => {
+        this.payForOrder();
+      }})
+    }
+    if(this.btnOptions.length === 0){
+      this.btnOptions.push({label: 'No actions available', icon: 'pi pi-ban'})
+    }
+  }
+
+  confirmCancel(order){
+    Swal.fire({
+      title: 'Are you sure you want to cancel the selected order?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#2f7081',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cancelOrder(order)
       }
-    ];
+    })
+  }
+
+  cancelOrder(order){
+    this.cancellingOrder = true;
+    setTimeout(()=>{
+      this.dashboardOrderService.cancelOrder({id:order.id}).subscribe(res=>{
+        this.cancellingOrder = false;
+        this.getOrders();
+      },error=>{
+        this.cancellingOrder = false;
+        Swal.fire(
+          'Error',
+          (error.message)?error.message:'There was a problem cancelling your order, please try again.',
+          'error'
+        )
+      })
+    },2000)
+  }
+
+  payForOrder(){
+
   }
 }

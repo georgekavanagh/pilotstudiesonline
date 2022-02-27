@@ -3,6 +3,7 @@ import { CartItem } from "../models/cart-item.model";
 import { Cart } from "../models/cart.model";
 import { CartDTO } from "../models/cartDTO.model";
 
+export const EMPTY_CART = "[CART] Empty out cart";
 export const ADD_TO_CART = "[CART] Add";
 export const ADD_TO_CART_SUCCESS = "[CART] Add To Cart Success";
 export const ADD_TO_CART_FAILURE = "[CART] Add To Cart Failure";
@@ -15,6 +16,10 @@ export const LOAD_CART = "[CART] Load Cart";
 export const LOAD_CART_SUCCESS = "[CART] Load Cart Success";
 export const LOAD_CART_FAILURE = "[CART] Load Cart Failure";
 
+export class EmptyOutCart implements Action {
+    readonly type = EMPTY_CART;
+    constructor(){}
+}
 export class AddToCart implements Action {
     readonly type = ADD_TO_CART;
     constructor(public payload: CartItem){}
@@ -58,5 +63,5 @@ export class LoadCartFailure implements Action {
     constructor(public payload: string){}
 }
 
-export type Actions = AddToCart | AddToCartSuccess | AddToCartFailure | RemoveFromCart |
+export type Actions = EmptyOutCart | AddToCart | AddToCartSuccess | AddToCartFailure | RemoveFromCart |
 RemoveFromCartSuccess | RemoveFromCartFailure | LoadCart | LoadCartSuccess | LoadCartFailure;

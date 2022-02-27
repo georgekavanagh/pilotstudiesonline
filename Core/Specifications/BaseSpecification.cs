@@ -14,11 +14,17 @@ namespace Core.Specifications
         }
 
         public Expression<Func<T, bool>> Criteria {get; }
+        public Expression<Func<T, object>> OrderByDescending { get; private set; }
 
         public List<Expression<Func<T, object>>> Includes {get; } = new List<Expression<Func<T, object>>>();
 
         protected void AddInclude(Expression<Func<T, object>> includeExpression){
             Includes.Add(includeExpression);
+        }
+
+        protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
+        {
+            OrderByDescending = orderByDescExpression;
         }
     }
 }

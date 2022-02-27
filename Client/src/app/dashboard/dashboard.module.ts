@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { DashboardShopComponent } from './dashboard-shop/dashboard-shop.component';
+import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-checkout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DashboardShopComponent } from './dashboard-shop/dashboard-shop.componen
     DashboardIndexComponent,
     DashboardProfileComponent,
     DashboardOrderComponent,
-    DashboardShopComponent
+    DashboardShopComponent,
+    DashboardCheckoutComponent
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
 })

@@ -79,6 +79,10 @@ export class DashboardLayoutComponent implements OnInit {
     this.router.navigate(['auth/login']);
   }
 
+  routeToCheckout(): void {
+    this.router.navigate(['/dashboard/checkout']);
+  }
+
   showCartErrorMsgs(){
     this.store.select('cart').subscribe((latestCart:Cart) =>{
       if(latestCart.status == 'error removing from cart'){

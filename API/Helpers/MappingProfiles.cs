@@ -6,7 +6,7 @@ namespace API.Helpers
     {
         public MappingProfiles()
         {
-            
+           
         }
     }
 }

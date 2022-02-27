@@ -14,6 +14,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -39,6 +40,7 @@ const commonModules = [
   MatSidenavModule,
   MatListModule,
   MatExpansionModule,
+  MatStepperModule,
   InputTextModule,
   CheckboxModule,
   ButtonModule,

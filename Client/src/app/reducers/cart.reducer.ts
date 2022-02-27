@@ -12,6 +12,13 @@ export const initialState:Cart = {
 
 export function cartReducer(state:Cart = initialState,action:CartActions.Actions){
     switch(action.type){
+        case CartActions.EMPTY_CART:
+            return {
+                ...state,
+                items: [],
+                error: null,
+                status:'pending'
+            }
         case CartActions.ADD_TO_CART:
             return {
                 ...state,

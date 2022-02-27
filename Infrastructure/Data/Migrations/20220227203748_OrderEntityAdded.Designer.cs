@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20220226175425_OrderEntityAdded")]
+    [Migration("20220227203748_OrderEntityAdded")]
     partial class OrderEntityAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,6 +125,9 @@ namespace Infrastructure.Data.Migrations
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("ProductName")
+                                .HasColumnType("TEXT");
+
+                            b1.Property<string>("ProductType")
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("OrderItemId");

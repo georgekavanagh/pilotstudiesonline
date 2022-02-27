@@ -125,6 +125,9 @@ namespace Infrastructure.Data.Migrations
                             b1.Property<string>("ProductName")
                                 .HasColumnType("TEXT");
 
+                            b1.Property<string>("ProductType")
+                                .HasColumnType("TEXT");
+
                             b1.HasKey("OrderItemId");
 
                             b1.ToTable("OrderItems");
