@@ -14,7 +14,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatStepperModule} from '@angular/material/stepper';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -26,8 +25,10 @@ import {DialogModule} from 'primeng/dialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {BadgeModule} from 'primeng/badge';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {DividerModule} from 'primeng/divider';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
 import { HttpClientModule } from '@angular/common/http';
 
 const commonModules = [
@@ -40,7 +41,6 @@ const commonModules = [
   MatSidenavModule,
   MatListModule,
   MatExpansionModule,
-  MatStepperModule,
   InputTextModule,
   CheckboxModule,
   ButtonModule,
@@ -50,6 +50,8 @@ const commonModules = [
   ProgressSpinnerModule,
   SplitButtonModule,
   OverlayPanelModule,
+  PanelModule,
+  DividerModule,
   MessagesModule,
   MessageModule,
   BadgeModule

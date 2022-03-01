@@ -4,6 +4,7 @@ import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-check
 import { DashboardIndexComponent } from './dashboard-index/dashboard-index.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
+import { DashboardPaymentComponent } from './dashboard-payment/dashboard-payment.component';
 import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 import { DashboardShopComponent } from './dashboard-shop/dashboard-shop.component';
 
@@ -28,6 +29,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'checkout',
     component: DashboardCheckoutComponent
+  },
+  {
+    path: 'payment/:orderId',
+    component: DashboardPaymentComponent
   }
 ];
 

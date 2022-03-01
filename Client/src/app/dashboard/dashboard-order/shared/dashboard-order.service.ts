@@ -17,9 +17,16 @@ export class DashboardOrderService {
     return this.http.get(`${environment.BASE_API_URL}/api/orders`);
   }
 
+  getUserOrderById(id:number){
+    return this.http.get(`${environment.BASE_API_URL}/api/orders/${id}`);
+  }
+
   cancelOrder(orderId:any) {
     return this.http.put(`${environment.BASE_API_URL}/api/orders/cancel`,orderId);
   }
 
-  
+  orderPaymentReceived(orderId:any) {
+    return this.http.put(`${environment.BASE_API_URL}/api/orders/payment-received`,orderId);
+  }
+
 }

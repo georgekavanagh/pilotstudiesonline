@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardOrderService } from './shared/dashboard-order.service';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-order',
@@ -13,7 +14,8 @@ export class DashboardOrderComponent implements OnInit {
   cancellingOrder:boolean = false;
   btnOptions:any[] = [];
 
-  constructor(private dashboardOrderService:DashboardOrderService) {}
+  constructor(private dashboardOrderService:DashboardOrderService,
+      private router:Router) {}
 
   ngOnInit(): void {
     this.getOrders();
@@ -53,8 +55,8 @@ export class DashboardOrderComponent implements OnInit {
       }})
     }
     if(order.status === 0){
-      this.btnOptions.push({label: 'Confirm Order', icon: 'pi pi-check-circle', command: () => {
-        this.payForOrder();
+      this.btnOptions.push({label: 'Proceed to payment', icon: 'pi pi-money-bill', command: () => {
+        this.router.navigate(["/dashboard/payment", order.id]);
       }})
     }
     if(this.btnOptions.length === 0){
@@ -68,9 +70,10 @@ export class DashboardOrderComponent implements OnInit {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#2f7081',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, cancel it!'
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#2f7081',
+      confirmButtonText: 'Yes, cancel it!',
+      cancelButtonText: 'Back'
     }).then((result) => {
       if (result.isConfirmed) {
         this.cancelOrder(order)
@@ -93,9 +96,5 @@ export class DashboardOrderComponent implements OnInit {
         )
       })
     },2000)
-  }
-
-  payForOrder(){
-
   }
 }

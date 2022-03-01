@@ -63,5 +63,20 @@ namespace API.Controllers
             var cancelledOrder = await _orderService.UpdateOrderAsync(order);
             return Ok(order);
         }
+
+
+        [HttpPut("payment-recieved")]
+        public async Task<ActionResult<Order>> SetOrderToPaymentReceived(OrderIdDto orderIdDto)
+        {
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+
+            var order = await _orderService.GetOrderByIdAsync(orderIdDto.Id,email);
+            if(order == null){
+                return BadRequest(new ApiResponse(400, "Problem cancelling order"));
+            }
+            order.Status = Core.Entities.OrderAggregate.OrderStatus.PaymentReceived;
+            var cancelledOrder = await _orderService.UpdateOrderAsync(order);
+            return Ok(order);
+        }
     }
 }

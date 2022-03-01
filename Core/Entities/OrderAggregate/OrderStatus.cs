@@ -8,8 +8,8 @@ namespace Core.Entities.OrderAggregate
         Pending,
         [EnumMember(Value ="Payment Received")]
         PaymentReceived,
-        [EnumMember(Value ="Payment Failed")]
-        PaymentFailed,
+        [EnumMember(Value ="Complete")]
+        Complete,
         [EnumMember(Value ="Cancelled")]
         Cancelled
     }

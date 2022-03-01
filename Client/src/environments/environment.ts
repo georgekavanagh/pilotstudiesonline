@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  BASE_API_URL:'https://localhost:5001'
+  BASE_API_URL:'https://localhost:5001',
+  MERCHANT_ID: '14909945',
+  MERCHANT_KEY:'o7rn37hez8edm',
+  PASS_PHRASE:'/cedTisgr84Wint3R'
 };
 
 /*

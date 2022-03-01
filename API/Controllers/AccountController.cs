@@ -71,7 +71,8 @@ namespace API.Controllers
                 DOB = user.DOB,
                 Mobile = user.Mobile,
                 Gender = user.Gender,
-                Role = user.Role
+                Role = user.Role,
+                Id = user.Id
             };
         }
 

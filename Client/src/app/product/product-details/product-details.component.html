@@ -9,17 +9,6 @@
               {{product.rating}}/5 ({{product.feedback}} Feedback)</a
             >
           </li>
-          <li class="mr-4">
-            <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)"
-              ><mat-icon class="mr-2">favorite</mat-icon> Save</a
-            >
-          </li>
-
-          <li class="mr-4">
-            <a class="flex items-center pr-4 py-1 hover:text-primary" href="javascript:void(0)"
-              ><mat-icon class="mr-2">share</mat-icon> Share</a
-            >
-          </li>
         </ul>
         <img class="w-full" [src]="product?.images[0]" alt="img not found" />
         <div class="ll-content mt-8">
@@ -64,38 +53,28 @@
       <div class="col-span-12 md:col-span-5 xl:col-span-4">
         <div class="border">
           <div class="p-5">
-            <h5>Choose an option below</h5>
+            <h5>On offer:</h5>
             <div class="flex mt-4">
-              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
-                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
-              </div>
               <div class="flex-grow">
                 <div class="price sm:float-right font-bold">ZAR {{product.coursePrice}}</div>
-                <h6 class="text-gray-800">Theoretical Course Only</h6>
+                <h6 class="text-gray-800">Theoretical Course (Comming Soon)</h6>
               </div>
             </div>
             <div class="flex mt-4">
-              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
-                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
-              </div>
               <div class="flex-grow">
                 <div class="price sm:float-right font-bold">ZAR {{product.mockExamPrice}}</div>
-                <h6 class="text-gray-800">Mock Exam Only</h6>
+                <h6 class="text-gray-800">Mock Exam</h6>
               </div>
             </div>
             <div class="flex mt-4">
-              <div class="sm:pt-1 mr-3 sm:mr-6 md:mr-8">
-                <input type="checkbox" class="appearance-none border border-gray-300 checked:bg-gray-400 checked:border-transparent ..." />
-              </div>
-              <div class="flex-grow">
+              <!-- <div class="flex-grow">
                 <div class="price sm:float-right font-bold">ZAR {{product.bundlePrice}}</div>
                 <h6 class="text-gray-800">Theoretical Course + Mock Exam</h6>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="border border-b px-5 pt-10 pb-12 text-center">
             <p class="text-gray-400 mb-4">Each purchase includes a <strong>one month subscription</strong> from the time of purchase</p>
-            <button mat-flat-button class="py-3 px-20 text-xl font-bold" color="accent">Buy now</button>
           </div>
         </div>
         <div class="border mt-5 px-5 py-10 text-center">

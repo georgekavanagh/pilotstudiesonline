@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { MenuItem } from "primeng/api";
@@ -20,7 +20,6 @@ import Swal from 'sweetalert2'
     cart$:Observable<Cart>;
     placingOrder:boolean = false;
     isOrderPlaced:boolean = false;
-    isPaymentComplete:boolean = false;
 
     constructor(private store: Store<AppState>,private router: Router,
       private checkoutService:CheckoutService){

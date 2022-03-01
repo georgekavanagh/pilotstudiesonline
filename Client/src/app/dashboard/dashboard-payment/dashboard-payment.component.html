@@ -1,0 +1,42 @@
+<p-panel *ngIf="!isPaymentComplete" header="Payment with Payfast">
+    <div class="mb-3">
+        <p>The payment is processed by PayFast. Please note that the order will only be processed and activated once we receive confirmation from Payfast. This usually takes a few minutes after payment, but it could take longer.
+        </p>
+        <br>
+        <p>
+            Once you click on the "Pay with Payfast" button, a pop-up will appear.On this pop-up you will be able to fill in your payment details and payment method in order to complete the payment. <strong>You do not need to register with PayFast.</strong>
+        </p>
+        <br>
+        <p>
+            PayFast only supports payments in South African Rand (ZAR). If you are placing an order in another country, the amount will first be converted to ZAR before you purchase and you will see the final price in ZAR before making payment.
+        </p>
+    </div>
+    <div class="p-5 flex justify-center">
+        <p-button styleClass="p-button-outlined" (click)="initPaymentProcess()" 
+        [loading]="paymentLoading">
+            <ng-template pTemplate="content">
+                <img alt="logo" src="assets/images/payfast.png" style="width: 1.5rem"/>
+                <span class="ml-2 font-bold">Pay with Payfast</span>
+            </ng-template>
+        </p-button>
+    </div>
+</p-panel>
+
+<div *ngIf="isPaymentComplete" class="w-full bg-white shadow-md">
+    <div class="flex flex-col items-center pb-10">
+        <div class="mt-5 mb-3 rounded-full shadow-lg" style="background-color: #69cb6e91;">
+            <i class="p-5 pi pi-check-circle" style="font-size: 4rem;color: green;"></i>
+        </div>
+        <h3 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Complete</h3>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Payment has been successfully processed, your order will be completed shortly</span>
+    </div>
+</div>
+
+<p-dialog header="Finalising Payment" 
+[visible]="finalisingPayment" [style]="{width: '40vw'}"
+modal="true" appendTo="body" [closable]="false">
+  <div class="flex flex-col items-center">
+    <p-progressSpinner></p-progressSpinner>
+    <div>Please wait...</div>
+  </div>
+</p-dialog>
