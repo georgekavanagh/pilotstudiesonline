@@ -10,7 +10,7 @@ import { CheckoutService } from "./checkout.service";
 import Swal from 'sweetalert2'
 
 @Component({
-    selector: 'checkout',
+    selector: 'll-dashboard-checkout',
     templateUrl: './dashboard-checkout.component.html',
     styleUrls: ['./dashboard-checkout.component.scss']
   })
@@ -67,5 +67,9 @@ import Swal from 'sweetalert2'
           )
         })
       },2000)
+    }
+
+    routeToOrders(){
+      this.router.navigate(['/dashboard/orders'])
     }
   }

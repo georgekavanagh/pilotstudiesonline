@@ -1,9 +1,11 @@
 using Core.Entities.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class UserController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;

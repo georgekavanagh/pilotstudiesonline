@@ -70,5 +70,17 @@ namespace Infrastructure.Services
             var spec = new OrdersWithItemsAndOrderingSpecification(buyerEmail);
             return await _orderRepo.GetAsync(spec);
         }
+
+        public async Task<PaginationEntity<Order>> GetAllOrdersReadyForCompletionAsync(OrderSpecParams orderParams)
+        {
+            var spec = new OrdersReadyForCompletionSpecification(orderParams);
+            var countSpec = new OrdersReadyForCompletionCountSpecification(orderParams);
+
+            var totalItems = await _orderRepo.CountAsync(countSpec);
+
+            var data = await _orderRepo.GetAsync(spec);
+
+            return new PaginationEntity<Order>(totalItems,data);
+        }
     }
 }

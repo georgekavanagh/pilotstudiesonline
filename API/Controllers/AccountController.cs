@@ -30,6 +30,12 @@ namespace API.Controllers
             var user = await _userManager.FindByEmailAsync(email);
             return new UserDto
             {
+                Id = user.Id,
+                CreatedDate = user.CreatedDate,
+                DOB = user.DOB,
+                Gender = user.Gender,
+                Mobile = user.Mobile,
+                Role = user.Role,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 FirstName = user.FirstName,

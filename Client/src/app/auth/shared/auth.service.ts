@@ -19,5 +19,9 @@ export class AuthService {
     return this.httpClient.post(`${environment.BASE_API_URL}/api/account/register`,registerDTO);
   }
 
+  getCurrentUser():Observable<any>{
+    return this.httpClient.get(`${environment.BASE_API_URL}/api/account`);
+  }
+
   
 }

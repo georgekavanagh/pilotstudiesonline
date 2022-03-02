@@ -5,6 +5,7 @@ import { Cart } from 'src/app/models/cart.model';
 import { CartDTO } from 'src/app/models/cartDTO.model';
 
 import { environment } from 'src/environments/environment';
+import { PaymentReceived } from './payment-recieved.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +26,8 @@ export class DashboardOrderService {
     return this.http.put(`${environment.BASE_API_URL}/api/orders/cancel`,orderId);
   }
 
-  orderPaymentReceived(orderId:any) {
-    return this.http.put(`${environment.BASE_API_URL}/api/orders/payment-received`,orderId);
+  orderPaymentReceived(paymentReceivedObj:PaymentReceived) {
+    return this.http.put(`${environment.BASE_API_URL}/api/orders/payment-received`,paymentReceivedObj);
   }
 
 }

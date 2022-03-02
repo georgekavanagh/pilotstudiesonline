@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardOrderService } from './shared/dashboard-order.service';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import * as _ from 'underscore';
 
 @Component({
-  selector: 'app-dashboard-order',
+  selector: 'll-dashboard-order',
   templateUrl: './dashboard-order.component.html',
   styleUrls: ['./dashboard-order.component.scss']
 })
@@ -26,7 +27,7 @@ export class DashboardOrderComponent implements OnInit {
     setTimeout(()=>{
       this.dashboardOrderService.getUserOrders().subscribe((orders:any[])=>{
         this.loadingOrders = false;
-        this.orders = orders;
+        this.orders = _.sortBy(orders,'id').reverse();
       },error=>{
         this.loadingOrders = false;
         this.orders = [];

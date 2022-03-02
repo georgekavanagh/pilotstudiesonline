@@ -12,6 +12,7 @@ import { DashboardOrderComponent } from './dashboard-order/dashboard-order.compo
 import { DashboardShopComponent } from './dashboard-shop/dashboard-shop.component';
 import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-checkout.component';
 import { DashboardPaymentComponent } from './dashboard-payment/dashboard-payment.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DashboardPaymentComponent } from './dashboard-payment/dashboard-payment
     DashboardOrderComponent,
     DashboardShopComponent,
     DashboardCheckoutComponent,
-    DashboardPaymentComponent
+    DashboardPaymentComponent,
+    DashboardAdminComponent
   ],
   imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
 })

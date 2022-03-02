@@ -1,5 +1,6 @@
 [
    {
+      "Activated":false,
       "Id":1,
       "Image":"assets/images/courses/air-law.jpg",
       "Name":"PPL Air Law",
@@ -12,6 +13,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":2,
       "Image":"assets/images/courses/principles-of-flight.jpg",
       "Name":"PPL Principles of Flight",
@@ -24,6 +26,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":3,
       "Image":"assets/images/courses/atg.jpg",
       "Name":"PPL Aircraft Technical & General",
@@ -36,6 +39,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":4,
       "Image":"assets/images/courses/meteorology.jpg",
       "Name":"PPL Meteorology",
@@ -48,6 +52,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":5,
       "Image":"assets/images/courses/flight-planning.jpeg",
       "Name":"PPL Flight Planning & Performance",
@@ -60,6 +65,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":6,
       "Image":"assets/images/courses/human-factors.jpg",
       "Name":"PPL Human Factors",
@@ -72,6 +78,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":7,
       "Image":"assets/images/courses/navigation.jpg",
       "Name":"PPL Navigation",
@@ -84,6 +91,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":8,
       "Image":"assets/images/courses/radio.jpg",
       "Name":"PPL Restricted Radio",
@@ -96,6 +104,7 @@
       "Type":"Course"
    },
    {
+      "Activated":false,
       "Id":9,
       "Image":"assets/images/courses/night-rating.jpg",
       "Name":"Night Rating",
@@ -108,114 +117,124 @@
       "Type":"Course"
    },
    {
+      "Activated":true,
       "Id":10,
       "Image":"assets/images/courses/air-law.jpg",
       "Name":"PPL Air Law",
       "Description":"PPL Air Law Mock Exam",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.3,
       "Feedback":27,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":11,
       "Image":"assets/images/courses/principles-of-flight.jpg",
       "Name":"PPL Principles of Flight",
       "Description":"PPL Principles of Flight Mock Exam",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.5,
       "Feedback":25,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":12,
       "Image":"assets/images/courses/atg.jpg",
       "Name":"PPL Aircraft Technical & General",
       "Description":"PPL Aircraft Technical & General Mock Exams",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.9,
       "Feedback":33,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":13,
       "Image":"assets/images/courses/meteorology.jpg",
       "Name":"PPL Meteorology",
       "Description":"PPL Meteorology mock exams",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.6,
       "Feedback":45,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":14,
       "Image":"assets/images/courses/flight-planning.jpeg",
       "Name":"PPL Flight Planning & Performance",
       "Description":"PPL Flight Planning & Performance Mock Exam",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.8,
       "Feedback":32,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":15,
       "Image":"assets/images/courses/human-factors.jpg",
       "Name":"PPL Human Factors",
       "Description":"PPL Human Factors Mock Exam",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":5,
       "Feedback":19,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":16,
       "Image":"assets/images/courses/navigation.jpg",
       "Name":"PPL Navigation",
       "Description":"PPL Navigation Mock Exams",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":4.7,
       "Feedback":25,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":17,
       "Image":"assets/images/courses/radio.jpg",
       "Name":"PPL Restricted Radio",
       "Description":"PPL Restricted Radio Mock Exams",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":5.0,
       "Feedback":32,
       "Category":"PPL",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":true,
       "Id":18,
       "Image":"assets/images/courses/night-rating.jpg",
       "Name":"Night Rating",
       "Description":"Night Rating Mock Exam",
       "ValidityPeriod":1,
-      "Price":100,
+      "Price":150,
       "Rating":5.0,
       "Feedback":15,
       "Category":"other",
       "Type":"Mock-Exam"
    },
    {
+      "Activated":false,
       "Id":19,
       "Image":"assets/images/courses/night-rating.jpg",
       "Name":"All Courses + Mock Exams",
@@ -228,6 +247,7 @@
       "Type":"Bundle"
    },
    {
+      "Activated":false,
       "Id":20,
       "Image":"assets/images/courses/night-rating.jpg",
       "Name":"All Courses",
@@ -240,6 +260,7 @@
       "Type":"Bundle"
    },
    {
+      "Activated":true,
       "Id":21,
       "Image":"assets/images/courses/night-rating.jpg",
       "Name":"All Mock Exams",

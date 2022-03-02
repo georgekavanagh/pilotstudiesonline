@@ -1,4 +1,5 @@
 export interface Product{
+    activated:boolean,
     id:number,
     name:string,
     description:string,

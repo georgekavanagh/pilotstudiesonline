@@ -30,7 +30,7 @@
 					<button type="button" pButton pRipple [pRowToggler]="order" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
 				</td>
 				<td>
-				  {{order.id}}
+				  {{'Order#'+order.id}}
 				</td>
 				<td>
 					{{(order && order.orderDate)?(order.orderDate|date):'No Date'}}
@@ -88,7 +88,7 @@
 		</ng-template>
 		<ng-template pTemplate="emptymessage">
 		  <tr>
-			  <td [attr.colspan]="6">
+			  <td [attr.colspan]="7">
 				  No orders found
 			  </td>
 		  </tr>

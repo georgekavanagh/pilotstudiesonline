@@ -8,7 +8,9 @@ import { Cart } from 'src/app/models/cart.model';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import * as CartActions from '../../actions/cart.actions';
+import * as UserActions from '../../actions/user.actions';
 import Swal from 'sweetalert2'
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
   selector: 'll-dashboard-layout',
@@ -22,7 +24,7 @@ export class DashboardLayoutComponent implements OnInit {
   favourites$:Observable<Product[]>
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router,
-    private store: Store<AppState>) {
+    private store: Store<AppState>, private authService:AuthService) {
     this.cart$ = this.store.select('cart');
     this.getCart();
     this.getLoggedInUser();
@@ -43,21 +45,11 @@ export class DashboardLayoutComponent implements OnInit {
     this.store.select('user').subscribe(latestUser =>{
       if(latestUser && latestUser.length > 0){
         this.user = latestUser[0];
+        console.log(this.user)
       }else{
-        // get user from server by id
-        this.user = {
-          id:1,
-          firstName:'George',
-          lastName:'Kavanagh',
-          email:'george.kavanagh',
-          mobile:'+27725473665',
-          dob:'09/04/1995',
-          createdDate:'2021-12-23T12:19:39.313Z',
-          gender:"male",
-          role:"USER",
-          courses:[],
-          mockExams:[]
-        }
+        this.authService.getCurrentUser().subscribe(currentUser=>{
+          this.user = currentUser;
+        })
       }
       
     })
@@ -76,6 +68,7 @@ export class DashboardLayoutComponent implements OnInit {
   }
 
   onLogout(): void {
+    this.store.dispatch(new UserActions.RemoveUser());
     this.router.navigate(['auth/login']);
   }
 

@@ -1,9 +1,11 @@
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class BasketController : BaseApiController
     {
         private readonly IBasketRepository _basketRepository;

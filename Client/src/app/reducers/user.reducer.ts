@@ -9,6 +9,8 @@ export function userReducer(state:User[],action:UserActions.Actions){
             }else{
                 return [action.payload]
             }
+        case UserActions.REMOVE_USER:
+            return []
         default:
             return state;
     }

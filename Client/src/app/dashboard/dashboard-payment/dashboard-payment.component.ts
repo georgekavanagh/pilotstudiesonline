@@ -6,11 +6,12 @@ import { DashboardOrderService } from "../dashboard-order/shared/dashboard-order
 import { DashboardPaymentService } from "./shared/dashboard-payment.service";
 import * as md5 from "../../../../node_modules/md5";
 import Swal from 'sweetalert2'
+import { PaymentReceived } from "../dashboard-order/shared/payment-recieved.model";
 
 declare const window: any;
 
 @Component({
-    selector: 'app-dashboard-payment',
+    selector: 'll-dashboard-payment',
     templateUrl: './dashboard-payment.component.html',
     styleUrls: ['./dashboard-payment.component.scss']
   })
@@ -90,7 +91,7 @@ declare const window: any;
         
         this.paymentService.getUniqueIdentifyer(pfParamString).subscribe((res:any)=>{
             if(res){
-                this.uuid = res;
+                this.uuid = res.uuid;
                 this.showPaymentPopUp();
             }
             this.paymentLoading = false;
@@ -109,7 +110,11 @@ declare const window: any;
             if (result === true) {
               this.finalisingPayment = true;
               setTimeout(()=>{
-                this.dashboardOrderService.orderPaymentReceived(this.orderId).subscribe(res=>{
+                let obj:PaymentReceived = {
+                    orderId : this.orderId,
+                    uuid : this.uuid
+                }
+                this.dashboardOrderService.orderPaymentReceived(obj).subscribe(res=>{
                     this.finalisingPayment = false;
                     this.isPaymentComplete = true;
                 },error=>{

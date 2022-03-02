@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-checkout.component';
 import { DashboardIndexComponent } from './dashboard-index/dashboard-index.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
@@ -33,6 +34,10 @@ const DashboardChildrenRoute: Routes = [
   {
     path: 'payment/:orderId',
     component: DashboardPaymentComponent
+  },
+  {
+    path: 'admin',
+    component: DashboardAdminComponent
   }
 ];
 

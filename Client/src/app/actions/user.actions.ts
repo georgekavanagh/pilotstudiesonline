@@ -12,7 +12,7 @@ export class AddUser implements Action {
 
 export class RemoveUser implements Action {
     readonly type = REMOVE_USER;
-    constructor(public payload: number){}
+    constructor(){}
 }
 
 export type Actions = AddUser | RemoveUser;

@@ -40,13 +40,19 @@ export class DashboardShopComponent implements OnInit {
     this.gettingProducts = true;
     setTimeout(()=>{
       this.productService.getAllProducts().subscribe((products:Product[])=>{
-        this.products = products;
+        this.products = this.getActivatedProducts(products);
         this.gettingProducts = false;
       },error=>{
         this.products = [];
         this.gettingProducts = false;
       })
     },2000)
+  }
+
+  getActivatedProducts(productList:Product[]){
+    return _.filter(productList,(item)=>{
+      return item.activated
+    })
   }
 
   getProductTypes(){
