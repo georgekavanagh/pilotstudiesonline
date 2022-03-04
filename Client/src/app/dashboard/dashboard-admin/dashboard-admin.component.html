@@ -3,7 +3,7 @@
         <p-table #orderDt [value]="ordersReadyForCompletion" [loading]="loadingOrders"
         [lazy]="true" (onLazyLoad)="getOrdersReadyForCompletion($event)"
         [paginator]="true" [rows]="10" [totalRecords]="totalRecords"
-        responsiveLayout="scroll" [rowsPerPageOptions]="[10,25,50]">
+        responsiveLayout="scroll">
           <ng-template pTemplate="caption">
             <div class="table-header flex flex-row justify-between">
                 <div>Orders</div>

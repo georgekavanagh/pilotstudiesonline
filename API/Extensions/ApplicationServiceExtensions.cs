@@ -14,6 +14,7 @@ namespace API.Extensions
             services.AddScoped<IOrderService,OrderService>();
             services.AddScoped<IBasketRepository,BasketRepository>();
             services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<IUserMockExamRepository,UserMockExamRepository>();
             services.AddScoped(typeof(IGenericRepository<>),(typeof(GenericRepository<>)));
             services.Configure<ApiBehaviorOptions>(options =>
             {

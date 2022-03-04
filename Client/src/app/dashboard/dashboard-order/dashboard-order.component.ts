@@ -50,7 +50,7 @@ export class DashboardOrderComponent implements OnInit {
 
   initBtnOptions(order){
     this.btnOptions = [];
-    if(order.status !== 3){
+    if(order.status === 0){
       this.btnOptions.push({label: 'Cancel Order', icon: 'pi pi-trash', command: () => {
         this.confirmCancel(order);
       }})

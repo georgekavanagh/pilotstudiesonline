@@ -1,4 +1,4 @@
 export interface PaymentReceived{
-    orderId:number,
+    id:number,
     uuid:string,
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "src/app/models/user.model";
 import { environment } from "src/environments/environment";
 import { DashboardOrderService } from "../dashboard-order/shared/dashboard-order.service";
@@ -26,12 +26,13 @@ declare const window: any;
     merchantID = environment.MERCHANT_ID;
     merchantKey = environment.MERCHANT_KEY;
     passPhrase = environment.PASS_PHRASE;
-    uuid:string;
+    uuidObj:any;
     MD5Signature:any;
     
     constructor(private activatedRoute: ActivatedRoute,
         private dashboardOrderService:DashboardOrderService,
-        private paymentService: DashboardPaymentService){
+        private paymentService: DashboardPaymentService,
+        private router: Router){
         this.orderId = +this.activatedRoute.snapshot.paramMap.get('orderId');
         this.user = JSON.parse(window.localStorage.getItem('profile'));
         console.log(this.orderId,'this.orderId')
@@ -91,7 +92,7 @@ declare const window: any;
         
         this.paymentService.getUniqueIdentifyer(pfParamString).subscribe((res:any)=>{
             if(res){
-                this.uuid = res.uuid;
+                this.uuidObj = res;
                 this.showPaymentPopUp();
             }
             this.paymentLoading = false;
@@ -106,32 +107,39 @@ declare const window: any;
     }
 
     showPaymentPopUp(){
-        window.payfast_do_onsite_payment(this.uuid, function (result) {
+        let that = this;
+        window.payfast_do_onsite_payment(this.uuidObj, function (result) {
             if (result === true) {
-              this.finalisingPayment = true;
-              setTimeout(()=>{
-                let obj:PaymentReceived = {
-                    orderId : this.orderId,
-                    uuid : this.uuid
-                }
-                this.dashboardOrderService.orderPaymentReceived(obj).subscribe(res=>{
-                    this.finalisingPayment = false;
-                    this.isPaymentComplete = true;
-                },error=>{
-                    this.finalisingPayment = false;
-                    this.isPaymentComplete = false;
-                    Swal.fire(
-                        'Error',
-                        'Payment has been received but the order failed to be updated, please contact us with the order number in order to update the order correctly.',
-                        'error'
-                      )
-                })
-
-              },2000)
+                that.finalisePayment();
             }
             else {
                 console.log('pop up closed')
             }
           }); 
+    }
+    finalisePayment(){
+        this.finalisingPayment = true;
+        setTimeout(()=>{
+          let obj:PaymentReceived = {
+              id : this.orderId,
+              uuid : this.uuidObj.uuid
+          }
+          this.dashboardOrderService.orderPaymentReceived(obj).subscribe(res=>{
+            this.finalisingPayment = false;
+            this.isPaymentComplete = true;
+          },error=>{
+            this.finalisingPayment = false;
+            this.isPaymentComplete = false;
+            Swal.fire(
+                'Error',
+                'Payment has been received but the order failed to be updated, please contact us with the order number in order to update the order correctly.',
+                'error'
+            )
+          })
+        },2000)
+    }
+
+    routeToOrders(){
+        this.router.navigate(['/dashboard/orders'])
     }
   }

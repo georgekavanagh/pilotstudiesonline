@@ -64,7 +64,7 @@
             </button>
             <div class="items-center flex ml-auto">
               <button mat-icon-button (click)="op.toggle($event)">
-                <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="(cart$ | async)?.items?.length" severity="danger"></i>
+                <i class="pi pi-shopping-cart p-mr-4 p-text-secondary" pBadge style="font-size: 2rem" [value]="''+(cart$ | async)?.items?.length" severity="danger"></i>
               </button>
               <p-overlayPanel #op [style]="{width: '600px'}">
                 <ng-template pTemplate *ngIf="cart$ | async as cartObj">

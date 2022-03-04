@@ -90,5 +90,20 @@ namespace API.Controllers
             var updatedOrder = await _orderService.UpdateOrderAsync(order);
             return Ok(updatedOrder);
         }
+
+        [HttpPost("complete")]
+        public async Task<ActionResult<Order>> CompleteOrder(OrderIdEmailDto orderIdEmailDto)
+        {
+            var order = await _orderService.GetOrderByIdAsync(orderIdEmailDto.Id,orderIdEmailDto.Email);
+
+            if(order == null){
+                return BadRequest(new ApiResponse(400, "Problem completing the order"));
+            }
+            order.Status = Core.Entities.OrderAggregate.OrderStatus.Complete;
+            var updatedOrder = await _orderService.UpdateOrderAsync(order);
+
+            
+            return Ok(updatedOrder);
+        }
     }
 }

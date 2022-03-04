@@ -30,4 +30,8 @@ export class DashboardOrderService {
     return this.http.put(`${environment.BASE_API_URL}/api/orders/payment-received`,paymentReceivedObj);
   }
 
+  getOrdersReadyForCompletion(pagingURIString) {
+    return this.http.get(`${environment.BASE_API_URL}/api/orders/ready-for-completion${pagingURIString}`);
+  }
+
 }

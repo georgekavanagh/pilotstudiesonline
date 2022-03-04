@@ -19,8 +19,8 @@
 				<th>Id</th>
 				<th>Ordered Date</th>
 				<th>No. of Products</th>
-				<th>Status</th>
 				<th pSortableColumn="total">Total<p-sortIcon field="total"></p-sortIcon></th>
+				<th>Status</th>
 				<th>Actions</th>
 			</tr>
 		</ng-template>
@@ -38,10 +38,10 @@
 				<td>
 					<div class="flex justify-center">{{(order && order.orderItems)?(order.orderItems.length):0}}</div>
 				</td>
-				<td>
-				  <span [class]="'type-badge-' + order.status">{{getStatusName(order.status)}}</span>
-				</td>
 				<td>ZAR {{order.total?order.total:0}}</td>
+				<td [class]="'type-badge-' + order.status">
+					<span >{{getStatusName(order.status)}}</span>
+				</td>
 				<td>
 
 				  <p-splitButton icon="pi pi-cog" (onDropdownClick)="initBtnOptions(order)" [model]="btnOptions" styleClass="p-button-secondary" appendTo="body"></p-splitButton>
