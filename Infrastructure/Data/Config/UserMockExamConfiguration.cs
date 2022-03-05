@@ -13,8 +13,6 @@ namespace Infrastructure.Data.Config
             builder.Property(o => o.Image).IsRequired();
             builder.Property(o => o.Category).IsRequired();
             builder.Property(o => o.Expiry).IsRequired();
-            builder.HasOne(o => o.User).WithMany().HasForeignKey(o => o.UserId).IsRequired();
-            
         }
     }
 }

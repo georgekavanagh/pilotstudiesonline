@@ -42,7 +42,7 @@ export class DashboardOrderComponent implements OnInit {
       case 1:
         return 'Payment Received';
       case 2:
-        return 'Payment Failed';
+        return 'Complete';
       case 3:
         return 'Cancelled'
     }

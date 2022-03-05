@@ -64,6 +64,71 @@
         </p-table>
     </p-tabPanel>
     <p-tabPanel header="Completed Orders" leftIcon="pi pi-check-circle">
-
+      <p-table #completeOrderDt [value]="completedOrders"
+        [lazy]="true" (onLazyLoad)="getCompletedOrders($event)"
+        [paginator]="true" [rows]="10" [totalRecords]="totalCompletedRecords"
+        responsiveLayout="scroll">
+          <ng-template pTemplate="caption">
+            <div class="table-header flex flex-row justify-between">
+                <div>Orders</div>
+                <div>
+                  <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" class="rounded" (input)="completeOrderDt.filterGlobal($event.target.value, 'contains')" placeholder="Search" />
+                </span>
+                </div>
+            </div>
+        </ng-template>
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>Id</th>
+                  <th>Ordered Date</th>
+                  <th>Ordered By</th>
+                  <th>Payfast Id</th>
+                  <th>No. of Products</th>
+                  <th>Status</th>
+                  <th pSortableColumn="total">Total<p-sortIcon field="total"></p-sortIcon></th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-order>
+              <tr>
+                  <td>
+                    {{'Order#'+order.id}}
+                  </td>
+                  <td>
+                      {{(order && order.orderDate)?(order.orderDate|date):'No Date'}}
+                  </td>
+                  <td>
+                      {{order.buyerEmail}}
+                  </td>
+                  <td>
+                    {{order.paymentIntentId}}
+                  </td>
+                  <td>
+                      <div class="flex justify-center">{{(order && order.orderItems)?(order.orderItems.length):0}}</div>
+                  </td>
+                  <td>
+                    <span [class]="'type-badge-' + order.status">{{getStatusName(order.status)}}</span>
+                  </td>
+                  <td>ZAR {{order.total?order.total:0}}</td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+                <td [attr.colspan]="8">
+                    No orders found
+                </td>
+            </tr>
+        </ng-template>
+        </p-table>
     </p-tabPanel>
 </p-tabView>
+
+<p-dialog header="Completing order" 
+[visible]="completingOrder" [style]="{width: '40vw'}"
+modal="true" appendTo="body" [closable]="false">
+  <div class="flex flex-col items-center">
+    <p-progressSpinner></p-progressSpinner>
+    <div>Please wait...</div>
+  </div>
+</p-dialog>

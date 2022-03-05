@@ -82,5 +82,16 @@ namespace Infrastructure.Services
 
             return new PaginationEntity<Order>(totalItems,data);
         }
+        public async Task<PaginationEntity<Order>> GetAllCompletedOrdersAsync(OrderSpecParams orderParams)
+        {
+            var spec = new CompletedOrdersSpecification(orderParams);
+            var countSpec = new CompletedOrdersCountSpecification(orderParams);
+
+            var totalItems = await _orderRepo.CountAsync(countSpec);
+
+            var data = await _orderRepo.GetAsync(spec);
+
+            return new PaginationEntity<Order>(totalItems,data);
+        }
     }
 }

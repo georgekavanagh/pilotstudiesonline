@@ -30,6 +30,7 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TabViewModule} from 'primeng/tabview';
+import {CardModule} from 'primeng/card';
 import { HttpClientModule } from '@angular/common/http';
 
 const commonModules = [
@@ -52,6 +53,7 @@ const commonModules = [
   SplitButtonModule,
   OverlayPanelModule,
   PanelModule,
+  CardModule,
   DividerModule,
   TabViewModule,
   MessagesModule,

@@ -18,7 +18,6 @@ namespace Core.Entities
         }
 
         public string UserId { get; set; }
-        public virtual AppUser User { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public string Category { get; set; }

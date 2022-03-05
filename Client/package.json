@@ -27,6 +27,7 @@
     "@ngrx/effects": "^12.5.1",
     "@ngrx/store": "^12.5.1",
     "md5": "^2.3.0",
+    "moment": "^2.29.1",
     "ng-particles": "^2.7.3",
     "ngx-skeleton-loader": "^2.10.0",
     "primeicons": "^5.0.0",

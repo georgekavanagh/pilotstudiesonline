@@ -34,11 +34,11 @@
             routerLink="/dashboard/orders"
             routerLinkActive="bg-gray-200"
             class="font-semibold text-gray-500 hover:text-primary"
-            ><mat-icon class="mr-2">article</mat-icon>My Orders</a
+            ><mat-icon class="mr-2">monetization_on</mat-icon>My Orders</a
           >
-          <a
+          <a *ngIf="user?.role === 'ADMIN'"
             mat-list-item
-            routerLink="/dashboard/complete-orders"
+            routerLink="/dashboard/admin"
             routerLinkActive="bg-gray-200"
             class="font-semibold text-gray-500 hover:text-primary"
             ><mat-icon class="mr-2">lock</mat-icon>Admin</a
@@ -162,11 +162,18 @@
                       routerLink="/dashboard/orders"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
-                      ><mat-icon class="mr-2">article</mat-icon> Orders</a
+                      ><mat-icon class="mr-2">monetization_on</mat-icon>My Orders</a
+                    >
+                    <a
+                      mat-list-item
+                      routerLink="/dashboard/exams"
+                      routerLinkActive="bg-gray-200"
+                      class="font-semibold text-gray-500 hover:text-primary"
+                      ><mat-icon class="mr-2">list_alt</mat-icon>My Exams</a
                     >
                     <a *ngIf="user?.role === 'ADMIN'"
                       mat-list-item
-                      routerLink="/dashboard/admin"
+                      routerLink="/dashboard/exams"
                       routerLinkActive="bg-gray-200"
                       class="font-semibold text-gray-500 hover:text-primary"
                       ><mat-icon class="mr-2">lock</mat-icon>Admin</a

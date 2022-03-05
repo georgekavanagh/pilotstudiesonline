@@ -2,7 +2,7 @@ import { Course } from "./course.model";
 import { MockExam } from "./mock-exam.model";
 
 export interface User{
-    id:number,
+    id:string,
     firstName:string,
     lastName:string,
     email:string,
@@ -11,6 +11,4 @@ export interface User{
     gender:string,
     dob:string,
     role:string,
-    courses:Course[],
-    mockExams:MockExam[]
 }

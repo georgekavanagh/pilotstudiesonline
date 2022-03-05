@@ -2,6 +2,7 @@ using System.Security.Claims;
 using API.DTOs;
 using API.Errors;
 using API.Helpers;
+using Core.Entities;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
 using Core.Specifications;
@@ -49,6 +50,15 @@ namespace API.Controllers
             return Ok(new Pagination<Order>(orderParams.PageIndex, orderParams.PageSize,ordersReadyForCompletion.Count,ordersReadyForCompletion.Data));
         }
 
+        [HttpGet("completed-orders")]
+        public async Task<ActionResult<Pagination<Order>>> GetAllCompletedOrders([FromQuery]OrderSpecParams orderParams)
+        {
+            
+            var completedOrders = await _orderService.GetAllCompletedOrdersAsync(orderParams);
+            
+            return Ok(new Pagination<Order>(orderParams.PageIndex, orderParams.PageSize,completedOrders.Count,completedOrders.Data));
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrderByIdForUser(int id)
         {
@@ -92,18 +102,43 @@ namespace API.Controllers
         }
 
         [HttpPost("complete")]
-        public async Task<ActionResult<Order>> CompleteOrder(OrderIdEmailDto orderIdEmailDto)
+        public async Task<ActionResult<Order>> CompleteOrder(List<CompleteOrderDto> completeOrderDtos)
         {
-            var order = await _orderService.GetOrderByIdAsync(orderIdEmailDto.Id,orderIdEmailDto.Email);
-
-            if(order == null){
-                return BadRequest(new ApiResponse(400, "Problem completing the order"));
-            }
-            order.Status = Core.Entities.OrderAggregate.OrderStatus.Complete;
-            var updatedOrder = await _orderService.UpdateOrderAsync(order);
-
+            var client = new HttpClient();
+            List<bool> results = new List<bool>();
+            var success = true;
             
-            return Ok(updatedOrder);
+
+            foreach(var order in completeOrderDtos){
+                client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type","application/json");
+                var postTask = client.PostAsJsonAsync<UserMockExam>("https://localhost:5001/api/usermockexams", order.mockExam);
+                postTask.Wait();
+                var result = postTask.Result;
+                results.Add(result.IsSuccessStatusCode);
+            }
+
+            foreach(var result in results){
+                if(result == false){
+                  success = false;
+                }
+            }
+
+            if (success && completeOrderDtos.Count > 0)
+            {
+                var order = await _orderService.GetOrderByIdAsync(completeOrderDtos[0].Id,completeOrderDtos[0].Email);
+
+                if(order == null){
+                    return BadRequest(new ApiResponse(400, "Problem completing the order"));
+                }
+                order.Status = Core.Entities.OrderAggregate.OrderStatus.Complete;
+                var updatedOrder = await _orderService.UpdateOrderAsync(order);
+
+                return Ok(updatedOrder);
+            }
+            else
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

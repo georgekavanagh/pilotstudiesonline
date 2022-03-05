@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '../shared/components/header/header.service';
 
 @Component({
   selector: 'll-home',
@@ -24,7 +25,9 @@ export class HomeComponent implements OnInit {
       }
     }
   };
-  constructor() {}
+  constructor(private headerService:HeaderService) {
+     this.headerService.show(true);
+  }
 
   ngOnInit(): void {}
 }

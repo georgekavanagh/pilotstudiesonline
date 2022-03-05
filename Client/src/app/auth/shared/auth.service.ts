@@ -23,5 +23,9 @@ export class AuthService {
     return this.httpClient.get(`${environment.BASE_API_URL}/api/account`);
   }
 
+  getUserByEmail(email:string):Observable<any>{
+    return this.httpClient.get(`${environment.BASE_API_URL}/api/account/${email}`);
+  }
+
   
 }

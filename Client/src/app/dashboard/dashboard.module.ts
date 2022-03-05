@@ -13,6 +13,7 @@ import { DashboardShopComponent } from './dashboard-shop/dashboard-shop.componen
 import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-checkout.component';
 import { DashboardPaymentComponent } from './dashboard-payment/dashboard-payment.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { DashboardExamComponent } from './dashboard-exam/dashboard-exam.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.compo
     DashboardIndexComponent,
     DashboardProfileComponent,
     DashboardOrderComponent,
+    DashboardExamComponent,
     DashboardShopComponent,
     DashboardCheckoutComponent,
     DashboardPaymentComponent,

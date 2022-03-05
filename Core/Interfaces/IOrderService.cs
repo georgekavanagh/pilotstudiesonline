@@ -11,6 +11,7 @@ namespace Core.Interfaces
         Task<IReadOnlyList<Order>> GetOrdersForUserAsync(string buyerEmail);
 
         Task<PaginationEntity<Order>> GetAllOrdersReadyForCompletionAsync(OrderSpecParams orderParams);
+        Task<PaginationEntity<Order>> GetAllCompletedOrdersAsync(OrderSpecParams orderParams);
         Task<Order> GetOrderByIdAsync(int id, string buyerEmail);
         
     }

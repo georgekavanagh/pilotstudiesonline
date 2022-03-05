@@ -43,6 +43,25 @@ namespace API.Controllers
             };
         }
 
+        [HttpGet("{email}")]
+        public async Task<ActionResult<UserDto>> GetUserByEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            return new UserDto
+            {
+                Id = user.Id,
+                CreatedDate = user.CreatedDate,
+                DOB = user.DOB,
+                Gender = user.Gender,
+                Mobile = user.Mobile,
+                Role = user.Role,
+                Email = user.Email,
+                Token = _tokenService.CreateToken(user),
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+        }
+
         [HttpGet("emailexists")]
         public async Task<ActionResult<Boolean>> CheckEmailExistsAsync([FromQuery] string email)
         {

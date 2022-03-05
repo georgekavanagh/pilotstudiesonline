@@ -1,8 +1,13 @@
 import { Question } from "./question.model";
+import { User } from "./user.model";
 
 export interface MockExam{
     id:number,
+    userId:string
     name:string,
+    image:string,
     category:string,
-    expiryDate:Date
+    expiry:Date,
+    activationDate:Date,
+    activated:boolean
 }

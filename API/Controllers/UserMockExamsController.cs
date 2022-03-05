@@ -7,15 +7,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
-{
-    [Authorize]    
+{  
     public class UserMockExamsController : BaseApiController
     {
-        private readonly UserMockExamRepository _mockExamRepo;
+        private readonly IUserMockExamRepository _mockExamRepo;
         private readonly IMapper _mapper;
 
         public UserMockExamsController(
-            UserMockExamRepository mockExamRepo
+            IUserMockExamRepository mockExamRepo
         )
         {
             _mockExamRepo = mockExamRepo;
@@ -27,7 +26,7 @@ namespace API.Controllers
             return Ok(await _mockExamRepo.CreateUserMockExamAsync(userMockExam));
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<IReadOnlyList<UserMockExam>>> GetMockExams(string id)
         {
             return Ok(await _mockExamRepo.GetUserMockExamsAsync(id));
