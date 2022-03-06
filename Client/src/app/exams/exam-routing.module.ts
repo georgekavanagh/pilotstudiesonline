@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExamConfigComponent } from './config/exam-config.component';
+import { ExamComponent } from './exam/exam.component';
 
 
 const routes: Routes = [
   {
-    path: 'config/:type/:name',
-    component: ExamConfigComponent
+    path: 'exam',
+    component: ExamComponent
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ExamConfigRoutingModule {}
+export class ExamRoutingModule {}

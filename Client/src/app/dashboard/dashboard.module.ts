@@ -14,6 +14,7 @@ import { DashboardCheckoutComponent } from './dashboard-checkout/dashboard-check
 import { DashboardPaymentComponent } from './dashboard-payment/dashboard-payment.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 import { DashboardExamComponent } from './dashboard-exam/dashboard-exam.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,6 @@ import { DashboardExamComponent } from './dashboard-exam/dashboard-exam.componen
     DashboardPaymentComponent,
     DashboardAdminComponent
   ],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
+  imports: [ReactiveFormsModule, CommonModule, DashboardRoutingModule, SharedModule, MatMenuModule]
 })
 export class DashboardModule {}

@@ -9,10 +9,53 @@
             <ng-template pTemplate="footer">
                 <div>
                     <p-button label="Custom Exam" icon="pi pi-cog" styleClass="p-button-info"
-                    (click)="routeToExamConfig('Custom',exam.name)"></p-button>
+                    (click)="showExamConfigModal(exam)"></p-button>
                     <p-button label="Mock Exam" icon="pi pi-clock" styleClass="p-button-secondary ml-2"></p-button>
                 </div>
             </ng-template>
         </p-card>
     </div>
 </div>
+
+<p-dialog [header]="configModalHeaderText" [(visible)]="showConfigModal" appendTo="body" [modal]="true">
+    <p class="text-base text-slate-500">Create your own customised exams with a selection of categories and exam parameters</p>
+   <form class="mt-4" [formGroup]="examConfigForm" (ngSubmit)="checkFormValidation()">
+        <div class="rounded-md border p-4 sm:p-8 xl:p-18">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2"> Subject </label>
+                    <p class="rounded-sm border p-2">{{examConfigForm.get('subject').value}}</p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2"> Category </label>
+                    <p-dropdown [options]="examCategories" formControlName="category"
+                    [style]="{'width':'100%'}"></p-dropdown>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Amount of Questions {{examConfigForm.get('totalQuestions').value}} </label>
+                    <p-slider formControlName="totalQuestions" [min]="0" [max]="50"></p-slider>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Exam Duration </label>
+                    <p-selectButton [options]="examDurationOptions" formControlName="durationType"></p-selectButton>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Answer Reveal</label>
+                    <p-dropdown [options]="[{label:'At The End',value:true},{label:'After Each Question',value:false}]" [style]="{'width':'100%'}"
+                    formControlName="answersAtEnd"></p-dropdown>
+                </div>
+                <div *ngIf="examConfigForm.get('durationType')?.value === 'limited'">
+                    <label class="block text-gray-700 text-sm font-semibold mb-2">Duration</label>
+                    <p-dropdown [options]="[{label:'At The End',value:true},{label:'After Each Question',value:false}]" [style]="{'width':'100%'}"
+                    formControlName="answersAtEnd"></p-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full mt-6">
+            <button pButton [loading]="creatingExam"
+              class="p-button-raised p-button-secondary w-full"
+              type="submit" label="Create Exam">
+            </button>
+        </div>
+   </form>
+</p-dialog>

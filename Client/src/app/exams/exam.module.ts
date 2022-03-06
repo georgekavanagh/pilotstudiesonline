@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExamConfigComponent } from './config/exam-config.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ExamConfigRoutingModule } from './exam-routing.module';
+import { ExamRoutingModule } from './exam-routing.module';
+import { ExamComponent } from './exam/exam.component';
 
 @NgModule({
-  declarations: [ExamConfigComponent],
-  imports: [CommonModule, SharedModule,ExamConfigRoutingModule],
+  declarations: [ExamComponent],
+  imports: [CommonModule, SharedModule,ExamRoutingModule],
 })
 export class ExamModule {}
