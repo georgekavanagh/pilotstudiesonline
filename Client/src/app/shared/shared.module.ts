@@ -32,6 +32,7 @@ import {PanelModule} from 'primeng/panel';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
 import {SliderModule} from 'primeng/slider';
+import {InputNumberModule} from 'primeng/inputnumber';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -62,6 +63,7 @@ const commonModules = [
   SelectButtonModule,
   MessagesModule,
   MessageModule,
+  InputNumberModule,
   BadgeModule
 ];
 

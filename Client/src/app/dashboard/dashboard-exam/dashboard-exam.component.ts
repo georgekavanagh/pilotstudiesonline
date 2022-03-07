@@ -64,13 +64,15 @@ import { ExamService } from "./exam.service";
       this.examConfigForm.reset();
       this.examConfigForm.controls['subject'].patchValue(exam.name);
       this.examConfigForm.controls['totalQuestions'].patchValue(30);
-      this.examConfigForm.controls['durationType'].patchValue('unlimited');
+      this.examConfigForm.controls['durationType'].patchValue('limited');
+      this.examConfigForm.controls['timeDuration'].patchValue(120);
       this.examConfigForm.controls['answersAtEnd'].patchValue(true);
     }
 
     getCategoriesForExam(exam){
       //Make backend call for categories
       this.examCategories = [
+        {label:'All Sections',value:null},
         {label:'Part 1 definitions',value:'Part 1'},
         {label:'Part 61',value:'Part 61'},
         {label:'Part 67 Medical Requirements',value:'Part 67'},

@@ -3,3 +3,4 @@ bin
 appsettings.json
 *.db
 /Client/node_modules
+Client/src/environments/environment.ts

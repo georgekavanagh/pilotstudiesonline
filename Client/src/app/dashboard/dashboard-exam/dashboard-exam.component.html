@@ -17,8 +17,8 @@
     </div>
 </div>
 
-<p-dialog [header]="configModalHeaderText" [(visible)]="showConfigModal" appendTo="body" [modal]="true">
-    <p class="text-base text-slate-500">Create your own customised exams with a selection of categories and exam parameters</p>
+<p-dialog [header]="configModalHeaderText" [(visible)]="showConfigModal" appendTo="body" [modal]="true" [style]="{width: '70vw'}">
+    <p class="text-base text-slate-500">Create your own customised exam with a selection of categories and exam parameters</p>
    <form class="mt-4" [formGroup]="examConfigForm" (ngSubmit)="checkFormValidation()">
         <div class="rounded-md border p-4 sm:p-8 xl:p-18">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -46,8 +46,9 @@
                 </div>
                 <div *ngIf="examConfigForm.get('durationType')?.value === 'limited'">
                     <label class="block text-gray-700 text-sm font-semibold mb-2">Duration</label>
-                    <p-dropdown [options]="[{label:'At The End',value:true},{label:'After Each Question',value:false}]" [style]="{'width':'100%'}"
-                    formControlName="answersAtEnd"></p-dropdown>
+                    <p-inputNumber formControlName="timeDuration" suffix=" minutes"
+                    [style]="{'width':'100%'}" class="w-full">
+                    </p-inputNumber>
                 </div>
             </div>
         </div>
